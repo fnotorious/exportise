@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Coolvetica';
+    src: url(../../assets/coolvetica-rg.woff);
+}
+
 .canvas {
     position: relative;
     height: 100vh;
@@ -13,4 +18,45 @@
     width: 75%;
     background-color: rgb(80, 85, 230);
     display: flex;
+}
+
+.textBox {
+    position: absolute;
+    bottom: 0;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    height: 4em;
+    width: 18em;
+    display: flex;
+    background-color: rgb(131, 255, 94);
+}
+
+.centerBox {
+    position: relative;
+    margin: auto;
+    height: 30em;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: block;
+}
+
+.logoBanner {
+    position: relative;
+    width: 45em;
+    height: 20em;
+    top: -2.8em;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.logoText {
+    top: -4.6em;
+    font-family: 'Coolvetica';
+    position: relative;
+    color: hsl(203, 100%, 73%);
+    font-size: 1.3em;
 }
