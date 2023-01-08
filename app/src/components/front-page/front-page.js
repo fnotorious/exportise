@@ -24,7 +24,10 @@ export default function FrontPage() {
                   </div>
                 </div>
             </div>
-            <div className={styles.textBox}></div>
+            <div className={styles.textBox}>
+              <h3 className={styles.madeBy}>Made by fnotorious</h3>
+              <p className={styles.link}>@https://github.com/fnotorious</p>
+            </div>
         </div>
     </div>
   )

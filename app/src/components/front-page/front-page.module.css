@@ -96,7 +96,7 @@
     margin: auto;
     height: 100%;
     width: 15em;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(114, 18, 92);
     display: flex;
     z-index: 0;
 }
@@ -113,10 +113,33 @@
     margin-right: auto;
 }
 
-.and {
+h3 {
     position: relative;
     font-family: 'Bahnscrhift';
     font-size: 1.5em;
     color: #a8a8a8;
+}
+
+.and {
     margin: auto;
 }
+
+.madeBy {
+    position: absolute;
+    margin-top: 0;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.link {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5em;
+    position: relative;
+    font-family: 'Bahnscrhift';
+    font-size: 1.2em;
+    color: #a8a8a8;
+}
+
