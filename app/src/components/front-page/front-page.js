@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import styles from './front-page.module.css'
-import banner from '../../assets/homepage-design-CHRISTMAS-PNG.png'
+import banner from '../../assets/ITSCHRISTMAS.png'
 
 import { DropdownMenu } from '../dropdown/dropdown'
+import { BurgerMenu } from '../burger-menu/burger-menu'
 
 export default function FrontPage() {
   
@@ -10,17 +11,12 @@ export default function FrontPage() {
 
   const [selectedOption1, setSelectedOption1] = useState('');
   const [selectedOption2, setSelectedOption2] = useState('');
+  const [showError, setShowError] = useState(false);
 
-  const [showComponent, setShowComponent] = useState(false);
-
-  const handleButtonClick = () => {
-    setShowComponent(true);
-
-    console.log(selectedOption1);
-    console.log(selectedOption2);
-
+  const handleError = () => {
+    setShowError(true);
     setTimeout(() => {
-      setShowComponent(false);
+      setShowError(false);
     }, 1500);
   };
 
@@ -47,6 +43,9 @@ export default function FrontPage() {
   return (
     <div className={styles.canvas}>
         <div className={styles.mainSection}>
+            <div className={styles.burgerMenuBox}>
+              <BurgerMenu></BurgerMenu>
+            </div>
             <div className={styles.centerBox}>
                 <img src={banner} alt="BANNER" className={styles.logoBanner}></img>
                 <div className={styles.logoText}>Comparing trade and economy between nations</div>
@@ -62,8 +61,8 @@ export default function FrontPage() {
                     <DropdownMenu onChange={handleOption2Change}></DropdownMenu>
                   </div>
                 </div>
-                <button className={styles.compareButton} onClick={handleButtonClick}>Compare!</button>
-                {showComponent && error}
+                <button className={styles.compareButton} onClick={handleError}>Compare!</button>
+                {showError && error}
             </div>
             <div className={styles.textBox}>
               <h3 className={styles.madeBy}>Made by fnotorious</h3>

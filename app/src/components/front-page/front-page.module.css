@@ -38,6 +38,17 @@
     background-color: rgb(255, 255, 255);
 }
 
+.burgerMenuBox {
+    position: absolute;
+    margin-top: 6em;
+    right: 0em;
+    height: 2em;
+    width: 2em;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    z-index: 1;
+}
+
 .centerBox {
     position: relative;
     margin: auto;
@@ -166,6 +177,8 @@ h3 {
     color: white;
     text-decoration: none;
     outline: none;
+    transform: scale(1.06);
+    box-shadow: 0 5px 15px #fd777c;
   }
 
   .compareButton span {
