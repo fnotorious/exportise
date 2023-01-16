@@ -4,20 +4,34 @@ import Moon from '../../assets/moon.svg'
 import Info from '../../assets/information-circle.svg'
 import styles from './burger-menu.module.css'
 
-export const BurgerMenu = () => {
-    const menu = 
-    <div className={styles.menuBox}>
-        <p className={styles.options}>
-            <img className={styles.icon} alt="moon" src={Moon}></img>Dark mode<div className={styles.switchBase}></div></p>
-        <p className={styles.options}><img className={styles.icon} alt="info" src={Info}></img>Help</p>
-        <p className={styles.options}>Credits</p>
-    </div>;
-
+export const BurgerMenu = ({ darkMode }) => {
+    const [darkSwitch, setDarkSwitch] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
 
     const handleMenu = () => {
         setShowMenu((prevShowComponent) => !prevShowComponent);
     }
+
+    const toggleDarkMode = () => {
+        setDarkSwitch((prevDarkSetting) => !prevDarkSetting);
+    };
+
+    const menu = 
+        <div className={styles.menuBox}>
+            <div onClick={darkMode}>
+                <div className={styles.options} onClick={() => {toggleDarkMode();}}>
+                    <p>
+                        <img className={styles.icon} alt="moon" src={Moon}></img>
+                        Dark mode
+                    </p>
+                    <div className={`${styles.switchBase} ${darkSwitch ? styles.darkOn : styles.darkOff}`}>
+                        <div className={`${styles.switch} ${darkSwitch ? styles.switchOn : ''}`}></div>
+                    </div>
+                </div>
+            </div>
+            <p className={styles.options}><img className={styles.icon} alt="info" src={Info}></img>Help</p>
+            <p className={styles.options}>Credits</p>
+        </div>;
 
     return (
         <div>

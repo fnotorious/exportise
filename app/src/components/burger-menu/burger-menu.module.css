@@ -69,15 +69,36 @@
   .switchBase {
     width: 2.5em;
     height: 1.5em;
-    margin-top: -.3em;
-    margin-left: 1em;
+    margin-top: -2.5em;
+    margin-left: 7.5em;
     display: inline-block;
-    cursor: pointer;
     border-radius: 2em;
     transition: all 0.5s;
     position: absolute;
-    background-color: #fd777c;
     border: .12em solid #ccc;
+  }
+
+  .switch {
+    height: 1.55em;
+    width: 1.5em;
+    margin-left: -.05em;
+    display: inline-block;
+    border-radius: 2em;
+    transition: all 0.5s;
+    position: absolute;
+    background-color: #ccc;;
+  }
+
+  .switchOn {
+    transform: translateX(1.05em);
+  }
+
+  .darkOff {
+    background-color: #fd777c;
+  }
+
+  .darkOn {
+    background-color: hsl(203, 100%, 73%);
   }
 
 

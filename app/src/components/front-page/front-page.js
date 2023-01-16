@@ -11,8 +11,14 @@ export default function FrontPage() {
 
   const [selectedOption1, setSelectedOption1] = useState('');
   const [selectedOption2, setSelectedOption2] = useState('');
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [showError, setShowError] = useState(false);
 
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevDarkSetting) => !prevDarkSetting);;
+    console.log(isDarkMode);
+  }
+ 
   const handleError = () => {
     setShowError(true);
     setTimeout(() => {
@@ -41,32 +47,32 @@ export default function FrontPage() {
   }
 
   return (
-    <div className={styles.canvas}>
+    <div className={`${styles.canvas} ${isDarkMode ? styles.darkWhite : ''}`}>
         <div className={styles.mainSection}>
             <div className={styles.burgerMenuBox}>
-              <BurgerMenu></BurgerMenu>
+              <BurgerMenu darkMode={toggleDarkMode}></BurgerMenu>
             </div>
             <div className={styles.centerBox}>
                 <img src={banner} alt="BANNER" className={styles.logoBanner}></img>
-                <div className={styles.logoText}>Comparing trade and economy between nations</div>
+                <div className={`${styles.logoText} ${isDarkMode ? styles.darkGray : ''}`}>Comparing trade and economy between nations</div>
                 <div className={styles.inputSection}>
                   <div className={styles.menuOne}>
                     <DropdownMenu onChange={handleOption1Change}></DropdownMenu>
                   </div>
                   <div className={styles.inputTextSection}>
-                    <h2 className={styles.letsCompare}>Let's compare:</h2>
-                    <h3 className={styles.and}>and...</h3>
+                    <h2 className={`${styles.letsCompare} ${isDarkMode ? styles.darkGray : ''}`}>Let's compare:</h2>
+                    <h3 className={`${styles.and} ${isDarkMode ? styles.darkGray : ''}`}>and...</h3>
                   </div>
                   <div className={styles.menuTwo}>
                     <DropdownMenu onChange={handleOption2Change}></DropdownMenu>
                   </div>
                 </div>
-                <button className={styles.compareButton} onClick={handleError}>Compare!</button>
+                <button className={`${styles.compareButton}`} onClick={handleError}>Compare!</button>
                 {showError && error}
             </div>
             <div className={styles.textBox}>
-              <h3 className={styles.madeBy}>Made by fnotorious</h3>
-              <p className={styles.smallText}>@https://github.com/fnotorious</p>
+              <h3 className={`${styles.madeBy} ${isDarkMode ? styles.darkGray : ''}`}>Made by fnotorious</h3>
+              <p className={`${styles.smallText} ${isDarkMode ? styles.darkGray : ''}`}>@https://github.com/fnotorious</p>
             </div>
         </div>
     </div>

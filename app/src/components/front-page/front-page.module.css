@@ -8,6 +8,14 @@
     src: url(../../assets/bahnschrift.woff);
 }
 
+.darkWhite {
+    background-color: rgb(8, 14, 41) !important;
+}
+
+.darkGray {
+    color: rgb(52, 68, 147) !important;
+}
+
 .canvas {
     position: relative;
     height: 100vh;
@@ -21,7 +29,7 @@
     margin: auto;
     height: 100vh;
     width: 75%;
-    background-color: rgb(255, 255, 255);
+    background-color: transparent;
     display: flex;
 }
 
@@ -35,17 +43,17 @@
     height: 4em;
     width: 18em;
     display: flex;
-    background-color: rgb(255, 255, 255);
+    background-color: transparent;
 }
 
 .burgerMenuBox {
     position: absolute;
     margin-top: 6em;
     right: 0em;
-    height: 2em;
-    width: 2em;
+    height: 3.2em;
+    width: 3.5em;
     display: flex;
-    background-color: rgb(255, 255, 255);
+    background-color: transparent;
     z-index: 1;
 }
 
@@ -54,7 +62,7 @@
     margin: auto;
     height: 30em;
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: transparent;
     display: block;
 }
 
@@ -79,7 +87,7 @@
 
 .inputSection {
     position: relative;
-    background-color: rgb(255, 255, 255);
+    background-color: transparent;
     display: flex;
     width: 100%;
     height: 8em;
@@ -107,7 +115,7 @@
     margin: auto;
     height: 100%;
     width: 15em;
-    background-color: rgb(255, 255, 255);
+    background-color: transparent;
     display: flex;
     z-index: 0;
 }
