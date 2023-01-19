@@ -180,6 +180,10 @@ h3 {
     outline: none;
   }
 
+  .compareButtonDark {
+    background-color: rgb(30, 30, 154);
+  }
+
   .compareButton:hover {
     background-color: #fd777c;
     color: white;
