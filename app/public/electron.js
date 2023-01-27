@@ -13,6 +13,8 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
     },
+    minWidth: 1010,
+    minHeight: 800,
   });
 
   // and load the index.html of the app.

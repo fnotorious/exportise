@@ -6,23 +6,38 @@ import { DropdownMenu } from '../dropdown/dropdown'
 import { BurgerMenu } from '../burger-menu/burger-menu'
 
 export default function FrontPage() {
-  
-  let error = "";
-
   const [selectedOption1, setSelectedOption1] = useState('');
   const [selectedOption2, setSelectedOption2] = useState('');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showError, setShowError] = useState(false);
 
+  let errorFlag = false;
+  let error = "";
+  if (selectedOption1 === selectedOption2) {
+    error = <p className={`${styles.smallText} ${isDarkMode ? styles.darkGray : ''}`}>Don't pick the same country!</p>
+    errorFlag = true;
+  }
+
+  else if (selectedOption1 === 'none' || selectedOption2 === 'none' || selectedOption1 === '' || selectedOption2 === '') {
+    error = <p className={`${styles.smallText} ${isDarkMode ? styles.darkGray : ''}`}>Pick a country</p>
+    errorFlag = true;
+  }
+
   const toggleDarkMode = () => {
     setIsDarkMode((prevDarkSetting) => !prevDarkSetting);;
   }
  
-  const handleError = () => {
-    setShowError(true);
-    setTimeout(() => {
-      setShowError(false);
-    }, 1500);
+  const handleSubmit = () => {
+    if (errorFlag) {
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 1500);
+    }
+
+    else {
+      
+    }
   };
 
   const handleOption1Change = (event) => {
@@ -32,18 +47,6 @@ export default function FrontPage() {
   const handleOption2Change = (event) => {
     setSelectedOption2(event.target.value);
   };
-
-  if (selectedOption1 === selectedOption2) {
-    error = <p className={`${styles.smallText} ${isDarkMode ? styles.darkGray : ''}`}>Don't pick the same country!</p>
-  }
-
-  else if (selectedOption1 === 'none' || selectedOption2 === 'none' || selectedOption1 === '' || selectedOption2 === '') {
-    error = <p className={`${styles.smallText} ${isDarkMode ? styles.darkGray : ''}`}>Pick a country</p>
-  }
-
-  else {
-    error = null;
-  }
 
   return (
     <div className={`${styles.canvas} ${isDarkMode ? styles.darkWhite : ''}`}>
@@ -66,7 +69,7 @@ export default function FrontPage() {
                     <DropdownMenu darkMode={isDarkMode} onChange={handleOption2Change}></DropdownMenu>
                   </div>
                 </div>
-                <button className={styles.compareButton} onClick={handleError}>Compare!</button>
+                <button className={styles.compareButton} onClick={handleSubmit}>Compare!</button>
                 {showError && error}
             </div>
             <div className={styles.textBox}>
