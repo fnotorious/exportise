@@ -56,14 +56,14 @@ export default function FrontPage() {
                 <div className={`${styles.logoText} ${isDarkMode ? styles.darkGray : ''}`}>Comparing trade and economy between nations</div>
                 <div className={styles.inputSection}>
                   <div className={styles.menuOne}>
-                    <DropdownMenu onChange={handleOption1Change}></DropdownMenu>
+                    <DropdownMenu darkMode={isDarkMode} onChange={handleOption1Change}></DropdownMenu>
                   </div>
                   <div className={styles.inputTextSection}>
                     <h2 className={`${styles.letsCompare} ${isDarkMode ? styles.darkGray : ''}`}>Let's compare:</h2>
                     <h3 className={`${styles.and} ${isDarkMode ? styles.darkGray : ''}`}>and...</h3>
                   </div>
                   <div className={styles.menuTwo}>
-                    <DropdownMenu onChange={handleOption2Change}></DropdownMenu>
+                    <DropdownMenu darkMode={isDarkMode} onChange={handleOption2Change}></DropdownMenu>
                   </div>
                 </div>
                 <button className={styles.compareButton} onClick={handleError}>Compare!</button>

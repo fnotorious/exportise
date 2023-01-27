@@ -1,3 +1,9 @@
+.darkInput {
+  border: #344493 !important;
+  background: #2b336f !important;
+  color: white;
+}
+
 .input {
     position: relative;
     display: inline-block;

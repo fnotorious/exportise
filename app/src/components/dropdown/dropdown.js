@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './dropdown.module.css'
 
-export const DropdownMenu = ({ onChange }) => {
+export const DropdownMenu = ({ darkMode, onChange }) => {
   return (
     <div>
-        <select onChange={onChange} className={styles.input}>
+        <select onChange={onChange} className={`${styles.input} ${darkMode ? styles.darkInput : ''}`}>
             <option value="none" id="">Select a country</option>
             <option value="albania" id="Albania">Albania</option>
             <option value="algeria" id="Algeria">Algeria</option>

@@ -3,8 +3,13 @@
     src: url(../../assets/bahnschrift.woff);
 }
 
-.darkWhite {
+.darkMenuBox {
   background-color: rgb(8, 14, 41) !important;
+  border: .12em solid rgb(52, 68, 147) !important;
+}
+
+.darkGray {
+  color: rgb(52, 68, 147);
 }
 
 .menuDark:hover {
@@ -84,7 +89,6 @@
     border-radius: 2em;
     transition: all 0.5s;
     position: absolute;
-    border: .12em solid #ccc;
   }
 
   .switch {
@@ -100,14 +104,17 @@
 
   .switchOn {
     transform: translateX(1.05em);
+    background-color: rgb(52, 68, 147) !important;
   }
 
   .darkOff {
     background-color: #fd777c;
+    border: .12em solid #ccc;
   }
 
   .darkOn {
     background-color: hsl(203, 100%, 73%);
+    border: .12em solid rgb(52, 68, 147) !important;
   }
 
 

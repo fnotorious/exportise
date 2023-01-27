@@ -17,21 +17,21 @@ export const BurgerMenu = ({ darkMode }) => {
     };
 
     const menu = 
-        <div className={styles.menuBox}>
+        <div className={`${styles.menuBox} ${darkSwitch ? styles.darkMenuBox : ''}`}>
             <div onClick={darkMode}>
-                <div className={styles.options} onClick={() => {toggleDarkMode();}}>
-                    <Moon></Moon>
+                <div className={`${styles.options} ${darkSwitch ? styles.darkGray : ''}`} onClick={() => {toggleDarkMode();}}>
+                    <Moon darkMode={darkSwitch}></Moon>
                     <p className={styles.optionText}>Dark mode</p>
                     <div className={`${styles.switchBase} ${darkSwitch ? styles.darkOn : styles.darkOff}`}>
                         <div className={`${styles.switch} ${darkSwitch ? styles.switchOn : ''}`}></div>
                     </div>
                 </div>
             </div>
-            <div className={styles.options}>
-                <Info></Info>
+            <div className={`${styles.options} ${darkSwitch ? styles.darkGray : ''}`}>
+                <Info darkMode={darkSwitch}></Info>
                 <p className={styles.optionText}>Help</p>
             </div>
-            <div className={styles.options}>
+            <div className={`${styles.options} ${darkSwitch ? styles.darkGray : ''}`}>
                 <p className={styles.optionText}>Credits</p>
             </div> 
         </div>;
@@ -39,7 +39,7 @@ export const BurgerMenu = ({ darkMode }) => {
     return (
         <div>
             <div className={`${styles.menu} ${darkSwitch ? styles.menuDark : ''}`} onClick={handleMenu}>
-                <Menu></Menu>
+                <Menu darkMode={darkSwitch}></Menu>
             </div>
             {showMenu && menu}
         </div>
