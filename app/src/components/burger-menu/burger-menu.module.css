@@ -3,6 +3,14 @@
     src: url(../../assets/bahnschrift.woff);
 }
 
+.darkWhite {
+  background-color: rgb(8, 14, 41) !important;
+}
+
+.menuDark:hover {
+  background-color: rgb(30, 41, 93) !important;
+}
+
 .menu {
     width: 1.5em;
     height: 1.3em;
@@ -44,13 +52,15 @@
     font-family: 'Bahnschrift';
   }
 
-  .icon {
-    margin-right: .5em;
-    margin-bottom: -.2em;
+  .optionText {
+    margin-left: .3em;
   }
 
   .options {
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     transition: all 0.5s;
   }
 
@@ -69,7 +79,6 @@
   .switchBase {
     width: 2.5em;
     height: 1.5em;
-    margin-top: -2.5em;
     margin-left: 7.5em;
     display: inline-block;
     border-radius: 2em;

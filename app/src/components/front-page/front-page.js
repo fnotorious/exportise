@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styles from './front-page.module.css'
 import banner from '../../assets/ITSCHRISTMAS.png'
-import bannerDark from '../../assets/homepage-design-CHRISTMAS-PNG-DARK.png'
 
 import { DropdownMenu } from '../dropdown/dropdown'
 import { BurgerMenu } from '../burger-menu/burger-menu'
@@ -17,7 +16,6 @@ export default function FrontPage() {
 
   const toggleDarkMode = () => {
     setIsDarkMode((prevDarkSetting) => !prevDarkSetting);;
-    console.log(isDarkMode);
   }
  
   const handleError = () => {
@@ -36,11 +34,11 @@ export default function FrontPage() {
   };
 
   if (selectedOption1 === selectedOption2) {
-    error = <p className={styles.smallText}>Don't pick the same country!</p>
+    error = <p className={`${styles.smallText} ${isDarkMode ? styles.darkGray : ''}`}>Don't pick the same country!</p>
   }
 
   else if (selectedOption1 === 'none' || selectedOption2 === 'none' || selectedOption1 === '' || selectedOption2 === '') {
-    error = <p className={styles.smallText}>Pick a country</p>
+    error = <p className={`${styles.smallText} ${isDarkMode ? styles.darkGray : ''}`}>Pick a country</p>
   }
 
   else {
@@ -54,7 +52,7 @@ export default function FrontPage() {
               <BurgerMenu darkMode={toggleDarkMode}></BurgerMenu>
             </div>
             <div className={styles.centerBox}>
-                <img src={isDarkMode ? bannerDark : banner } alt="BANNER" className={styles.logoBanner}></img>
+                <img src={banner} alt="BANNER" className={styles.logoBanner}></img>
                 <div className={`${styles.logoText} ${isDarkMode ? styles.darkGray : ''}`}>Comparing trade and economy between nations</div>
                 <div className={styles.inputSection}>
                   <div className={styles.menuOne}>
@@ -68,7 +66,7 @@ export default function FrontPage() {
                     <DropdownMenu onChange={handleOption2Change}></DropdownMenu>
                   </div>
                 </div>
-                <button className={`${styles.compareButton} ${isDarkMode ? styles.compareButtonDark : ''}`} onClick={handleError}>Compare!</button>
+                <button className={styles.compareButton} onClick={handleError}>Compare!</button>
                 {showError && error}
             </div>
             <div className={styles.textBox}>

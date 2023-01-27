@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Menu from '../../assets/Menu.svg'
-import Moon from '../../assets/moon.svg'
-import Info from '../../assets/information-circle.svg'
+import Moon from '../../assets/Moon.js'
+import Info from '../../assets/Info.js'
+import Menu from '../../assets/Menu.js'
 import styles from './burger-menu.module.css'
 
 export const BurgerMenu = ({ darkMode }) => {
@@ -20,23 +20,26 @@ export const BurgerMenu = ({ darkMode }) => {
         <div className={styles.menuBox}>
             <div onClick={darkMode}>
                 <div className={styles.options} onClick={() => {toggleDarkMode();}}>
-                    <p>
-                        <img className={styles.icon} alt="moon" src={Moon}></img>
-                        Dark mode
-                    </p>
+                    <Moon></Moon>
+                    <p className={styles.optionText}>Dark mode</p>
                     <div className={`${styles.switchBase} ${darkSwitch ? styles.darkOn : styles.darkOff}`}>
                         <div className={`${styles.switch} ${darkSwitch ? styles.switchOn : ''}`}></div>
                     </div>
                 </div>
             </div>
-            <p className={styles.options}><img className={styles.icon} alt="info" src={Info}></img>Help</p>
-            <p className={styles.options}>Credits</p>
+            <div className={styles.options}>
+                <Info></Info>
+                <p className={styles.optionText}>Help</p>
+            </div>
+            <div className={styles.options}>
+                <p className={styles.optionText}>Credits</p>
+            </div> 
         </div>;
 
     return (
         <div>
-            <div className={styles.menu} onClick={handleMenu}>
-                <img src={Menu} alt="MENU"></img>
+            <div className={`${styles.menu} ${darkSwitch ? styles.menuDark : ''}`} onClick={handleMenu}>
+                <Menu></Menu>
             </div>
             {showMenu && menu}
         </div>
