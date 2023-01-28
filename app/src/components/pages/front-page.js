@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import styles from './front-page.module.css'
 import banner from '../../assets/ITSCHRISTMAS.png'
 
@@ -10,6 +11,7 @@ export default function FrontPage() {
   const [selectedOption2, setSelectedOption2] = useState('');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showError, setShowError] = useState(false);
+  const navigate = useNavigate();
 
   let errorFlag = false;
   let error = "";
@@ -32,11 +34,12 @@ export default function FrontPage() {
       setShowError(true);
       setTimeout(() => {
         setShowError(false);
+        errorFlag = false;
       }, 1500);
     }
 
     else {
-      
+      navigate('/loading');
     }
   };
 

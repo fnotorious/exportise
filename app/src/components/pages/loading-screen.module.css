@@ -1,0 +1,15 @@
+.darkWhite {
+    background-color: rgb(8, 14, 41) !important;
+}
+
+.darkGray {
+    color: #344493 !important;
+}
+
+.loading {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+}
