@@ -6,7 +6,7 @@ import banner from '../../assets/ITSCHRISTMAS.png'
 import { DropdownMenu } from '../dropdown/dropdown'
 import { BurgerMenu } from '../burger-menu/burger-menu'
 
-export default function FrontPage() {
+const FrontPage = React.memo((props) => {
   const [selectedOption1, setSelectedOption1] = useState('');
   const [selectedOption2, setSelectedOption2] = useState('');
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -26,7 +26,8 @@ export default function FrontPage() {
   }
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prevDarkSetting) => !prevDarkSetting);;
+    setIsDarkMode((prevDarkSetting) => !prevDarkSetting);
+    props.handleChange(!props.isDarkMode);
   }
  
   const handleSubmit = () => {
@@ -82,4 +83,6 @@ export default function FrontPage() {
         </div>
     </div>
   )
-}
+})
+
+export default FrontPage;
