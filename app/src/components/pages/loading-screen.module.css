@@ -6,10 +6,121 @@
     color: #344493 !important;
 }
 
-.loading {
+.canvas {
     position: relative;
     height: 100vh;
     width: 100%;
     background-color: rgb(255, 255, 255);
     display: flex;
+}
+
+.mainSection {
+    position: relative;
+    margin: auto;
+    height: 100vh;
+    width: 75%;
+    background-color: transparent;
+    display: flex;
+}
+
+.centerBox {
+    position: relative;
+    margin: auto;
+    height: 30em;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+}
+
+.imageBox {
+    position: relative;
+    margin: auto;
+    width: 256px;
+    height: 6em;
+}
+
+.boat {
+    position: absolute;
+    opacity: 0;
+    width: 8em;
+    height: 6em;
+    left: 0; 
+    right: 0; 
+    top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -1.45em;
+    animation: 
+        rocking 2s alternate infinite ease-in-out,
+        fade 1s 1.5s linear forwards;
+}
+
+.waves {
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    margin: auto;
+    width: 256px;
+    height: 51px;
+}
+
+.hiddenRect {
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    margin-top: .64em;
+    width: 256px;
+    height: 40px;
+}
+
+.wave {
+    clip-path: url(#myClip);
+    overflow: hidden;
+    opacity: 0;
+    animation: fade .5s 1s linear forwards;
+    position: absolute;
+    margin: auto;
+    width: 256px;
+    height: 17px;
+}
+
+.wave2 {
+    margin-top: 1em;
+}
+
+.wave3 {
+    margin-top: 2em;
+}
+
+.waveBox {
+    width: 15.2em;
+    height: 1.7em;
+    background-color: hsl(203, 100%, 73%);;
+    animation: wave 2s alternate infinite ease-in-out;
+    margin: auto;
+}
+
+@keyframes wave {
+    0% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(25%);
+    }
+}
+
+@keyframes rocking {
+    0% {
+        transform: rotate(3deg);
+    }
+
+    100% {
+        transform: rotate(-3deg);
+    }
+}
+
+@keyframes fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
