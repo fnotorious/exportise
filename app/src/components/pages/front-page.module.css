@@ -8,12 +8,8 @@
     src: url(../../assets/bahnschrift.woff);
 }
 
-.darkWhite {
+.dark {
     background-color: rgb(8, 14, 41) !important;
-}
-
-.darkGray {
-    color: #344493 !important;
 }
 
 .canvas {
@@ -85,6 +81,10 @@
     font-size: 1.2em;
 }
 
+.dark .logoText {
+    color: #344493 !important;
+}
+
 .inputSection {
     position: relative;
     background-color: transparent;
@@ -132,11 +132,19 @@
     margin-right: auto;
 }
 
+.dark .letsCompare {
+    color: #344493 !important;
+}
+
 h3 {
     position: relative;
     font-family: 'Bahnscrhift';
     font-size: 1.5em;
     color: #a8a8a8;
+}
+
+.dark h3 {
+    color: #344493 !important;
 }
 
 .and {
@@ -160,6 +168,10 @@ h3 {
     font-family: 'Bahnscrhift';
     font-size: 1.2em;
     color: #a8a8a8;
+}
+
+.dark .smallText {
+    color: #344493 !important;
 }
 
 .compareButton {

@@ -7,29 +7,36 @@ import { DropdownMenu } from '../dropdown/dropdown'
 import { BurgerMenu } from '../burger-menu/burger-menu'
 
 const FrontPage = React.memo((props) => {
-  const [selectedOption1, setSelectedOption1] = useState('');
-  const [selectedOption2, setSelectedOption2] = useState('');
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [showError, setShowError] = useState(false);
-  const navigate = useNavigate();
+  const [selectedOption1, setSelectedOption1] = useState('');     // To capture selection from dropdown menu on left
+  const [selectedOption2, setSelectedOption2] = useState('');     // To capture selection from dropdown menu on right
+  const [isDarkMode, setIsDarkMode] = useState(false);            // To capture switch to dark mode
+  const [showError, setShowError] = useState(false);              // To capture an error and display on screen
+  
+  const navigate = useNavigate();                                 // To navigate to next page
 
-  let errorFlag = false;
-  let error = "";
+  let errorFlag = false;                                          // For checking if an error is present
+  let error = "";                                                 // For storing the error message to display
+
+
+  // If the selected options are the same
   if (selectedOption1 === selectedOption2) {
-    error = <p className={`${styles.smallText} ${isDarkMode ? styles.darkGray : ''}`}>Don't pick the same country!</p>
+    error = <p className={styles.smallText}>Don't pick the same country!</p>
     errorFlag = true;
   }
 
+  // If one or more of the dropdown menus have not been selected yet
   else if (selectedOption1 === 'none' || selectedOption2 === 'none' || selectedOption1 === '' || selectedOption2 === '') {
-    error = <p className={`${styles.smallText} ${isDarkMode ? styles.darkGray : ''}`}>Pick a country</p>
+    error = <p className={styles.smallText}>Pick a country</p>
     errorFlag = true;
   }
 
+  // Toggle dark mode for this page and all other pages in the app
   const toggleDarkMode = () => {
     setIsDarkMode((prevDarkSetting) => !prevDarkSetting);
     props.handleChange(!props.isDarkMode);
   }
  
+  // Submit and check for errors upon submit
   const handleSubmit = () => {
     if (errorFlag) {
       setShowError(true);
@@ -44,44 +51,48 @@ const FrontPage = React.memo((props) => {
     }
   };
 
+  // Capture left dropdown menu selection
   const handleOption1Change = (event) => {
     setSelectedOption1(event.target.value);
   };
 
+  // Capture right dropdown menu selection
   const handleOption2Change = (event) => {
     setSelectedOption2(event.target.value);
   };
 
   return (
-    <div className={`${styles.canvas} ${isDarkMode ? styles.darkWhite : ''}`}>
-        <div className={styles.mainSection}>
-            <div className={styles.burgerMenuBox}>
-              <BurgerMenu darkMode={toggleDarkMode}></BurgerMenu>
-            </div>
-            <div className={styles.centerBox}>
-                <img src={banner} alt="BANNER" className={styles.logoBanner}></img>
-                <div className={`${styles.logoText} ${isDarkMode ? styles.darkGray : ''}`}>Comparing trade and economy between nations</div>
-                <div className={styles.inputSection}>
-                  <div className={styles.menuOne}>
-                    <DropdownMenu darkMode={isDarkMode} onChange={handleOption1Change}></DropdownMenu>
+    <>
+      <div className={`${styles.canvas} ${isDarkMode ? styles.dark : ''}`}>
+          <div className={styles.mainSection}>
+              <div className={styles.burgerMenuBox}>
+                <BurgerMenu darkMode={toggleDarkMode}></BurgerMenu>
+              </div>
+              <div className={styles.centerBox}>
+                  <img src={banner} alt="BANNER" className={styles.logoBanner}></img>
+                  <div className={styles.logoText}>Comparing trade and economy between nations</div>
+                  <div className={styles.inputSection}>
+                    <div className={styles.menuOne}>
+                      <DropdownMenu darkMode={isDarkMode} onChange={handleOption1Change}></DropdownMenu>
+                    </div>
+                    <div className={styles.inputTextSection}>
+                      <h2 className={styles.letsCompare}>Let's compare:</h2>
+                      <h3 className={styles.and}>and...</h3>
+                    </div>
+                    <div className={styles.menuTwo}>
+                      <DropdownMenu darkMode={isDarkMode} onChange={handleOption2Change}></DropdownMenu>
+                    </div>
                   </div>
-                  <div className={styles.inputTextSection}>
-                    <h2 className={`${styles.letsCompare} ${isDarkMode ? styles.darkGray : ''}`}>Let's compare:</h2>
-                    <h3 className={`${styles.and} ${isDarkMode ? styles.darkGray : ''}`}>and...</h3>
-                  </div>
-                  <div className={styles.menuTwo}>
-                    <DropdownMenu darkMode={isDarkMode} onChange={handleOption2Change}></DropdownMenu>
-                  </div>
-                </div>
-                <button className={styles.compareButton} onClick={handleSubmit}>Compare!</button>
-                {showError && error}
-            </div>
-            <div className={styles.textBox}>
-              <h3 className={`${styles.madeBy} ${isDarkMode ? styles.darkGray : ''}`}>Made by fnotorious</h3>
-              <p className={`${styles.smallText} ${isDarkMode ? styles.darkGray : ''}`}>@https://github.com/fnotorious</p>
-            </div>
-        </div>
-    </div>
+                  <button className={styles.compareButton} onClick={handleSubmit}>Compare!</button>
+                  {showError && error}
+              </div>
+              <div className={styles.textBox}>
+                <h3 className={styles.madeBy}>Made by fnotorious</h3>
+                <p className={styles.smallText}>@https://github.com/fnotorious</p>
+              </div>
+          </div>
+      </div>
+    </>
   )
 })
 

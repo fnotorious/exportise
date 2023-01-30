@@ -1,9 +1,5 @@
-.darkWhite {
+.dark {
     background-color: rgb(8, 14, 41) !important;
-}
-
-.darkGray {
-    color: #344493 !important;
 }
 
 .canvas {
@@ -71,6 +67,10 @@
     margin-top: .64em;
     width: 256px;
     height: 40px;
+}
+
+.dark .hiddenRect {
+    background-color: rgb(8, 14, 41) !important;
 }
 
 .wave {
