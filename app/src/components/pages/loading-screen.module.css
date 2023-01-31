@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Bahnscrhift';
+    src: url(../../assets/bahnschrift.woff);
+}
+
 .dark {
     background-color: rgb(8, 14, 41) !important;
 }
@@ -22,10 +27,20 @@
 .centerBox {
     position: relative;
     margin: auto;
-    height: 30em;
+    height: 40em;
     width: 100%;
     background-color: transparent;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contentDisplay {
+    position: relative;
+    margin: auto;
+    height: 10em;
+    width: 30em;
 }
 
 .imageBox {
@@ -98,6 +113,34 @@
     background-color: hsl(203, 100%, 73%);;
     animation: wave 2s alternate infinite ease-in-out;
     margin: auto;
+}
+
+.loading {
+    position: relative;
+    opacity: 0;
+    font-family: 'Bahnscrhift';
+    font-size: 1.8em;
+    color: #a8a8a8;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    animation: fade .2s .2s linear forwards;
+    font-weight: 100;
+}
+
+.dark .loading {
+    color: #344493 !important;
+}
+
+.buttonPlacement {
+    position: absolute;
+    width: 10em;
+    height: 2.8em;
+    margin-bottom: 1em;
+    bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 @keyframes wave {

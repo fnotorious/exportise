@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'Bahnscrhift';
+    src: url(../../assets/bahnschrift.woff);
+}
+
+.button {
+    position: relative;
+    background-color: #77ccff;
+    color: white;
+    border: none;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 1em;
+    transition: all 0.5s;
+    font-family: 'Bahnscrhift';
+    font-weight: 500;
+    font-size: 1.3em;
+    width: 6.2em;
+    height: 2.3em;
+  }
+
+  .button:hover {
+    background-color: #fd777c;
+    color: white;
+    text-decoration: none;
+    outline: none;
+    transform: scale(1.06);
+    box-shadow: 0 5px 15px #fd777c;
+  }
+
+  .button span {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    transition: 0.5s;
+  }
