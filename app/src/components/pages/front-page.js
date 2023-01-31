@@ -9,7 +9,6 @@ import { BurgerMenu } from '../burger-menu/burger-menu'
 const FrontPage = React.memo((props) => {
   const [selectedOption1, setSelectedOption1] = useState('');     // To capture selection from dropdown menu on left
   const [selectedOption2, setSelectedOption2] = useState('');     // To capture selection from dropdown menu on right
-  const [isDarkMode, setIsDarkMode] = useState(false);            // To capture switch to dark mode
   const [showError, setShowError] = useState(false);              // To capture an error and display on screen
   
   const navigate = useNavigate();                                 // To navigate to next page
@@ -32,8 +31,7 @@ const FrontPage = React.memo((props) => {
 
   // Toggle dark mode for this page and all other pages in the app
   const toggleDarkMode = () => {
-    setIsDarkMode((prevDarkSetting) => !prevDarkSetting);
-    props.handleChange(!props.isDarkMode);
+    props.handleChange(!props.darkMode);
   }
  
   // Submit and check for errors upon submit
@@ -63,7 +61,7 @@ const FrontPage = React.memo((props) => {
 
   return (
     <>
-      <div className={`${styles.canvas} ${isDarkMode ? styles.dark : ''}`}>
+      <div className={`${styles.canvas} ${props.darkMode ? styles.dark : ''}`}>
           <div className={styles.mainSection}>
               <div className={styles.burgerMenuBox}>
                 <BurgerMenu darkMode={toggleDarkMode}></BurgerMenu>
@@ -73,14 +71,14 @@ const FrontPage = React.memo((props) => {
                   <div className={styles.logoText}>Comparing trade and economy between nations</div>
                   <div className={styles.inputSection}>
                     <div className={styles.menuOne}>
-                      <DropdownMenu darkMode={isDarkMode} onChange={handleOption1Change}></DropdownMenu>
+                      <DropdownMenu darkMode={props.darkMode} onChange={handleOption1Change}></DropdownMenu>
                     </div>
                     <div className={styles.inputTextSection}>
                       <h2 className={styles.letsCompare}>Let's compare:</h2>
                       <h3 className={styles.and}>and...</h3>
                     </div>
                     <div className={styles.menuTwo}>
-                      <DropdownMenu darkMode={isDarkMode} onChange={handleOption2Change}></DropdownMenu>
+                      <DropdownMenu darkMode={props.darkMode} onChange={handleOption2Change}></DropdownMenu>
                     </div>
                   </div>
                   <button className={styles.compareButton} onClick={handleSubmit}>Compare!</button>
