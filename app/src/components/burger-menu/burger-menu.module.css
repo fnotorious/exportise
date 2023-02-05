@@ -9,6 +9,10 @@
   color: rgb(52, 68, 147) !important;
 }
 
+.darkMenuHover:hover {
+  background-color: rgb(30, 41, 93) !important;
+}
+
 .menu {
     width: 22px;
     height: 1.3em;
@@ -25,10 +29,6 @@
     color: white;
     text-decoration: none;
     outline: none;
-  }
-
-  .dark .menu:hover {
-    background-color: rgb(30, 41, 93) !important;
   }
 
   .menu span {

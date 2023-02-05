@@ -64,7 +64,7 @@ const FrontPage = React.memo((props) => {
       <div className={`${styles.canvas} ${props.darkMode ? styles.dark : ''}`}>
           <div className={styles.mainSection}>
               <div className={styles.burgerMenuBox}>
-                <BurgerMenu darkMode={toggleDarkMode}></BurgerMenu>
+                <BurgerMenu darkModeFunction={toggleDarkMode} darkMode={props.darkMode}></BurgerMenu>
               </div>
               <div className={styles.centerBox}>
                   <img src={banner} alt="BANNER" className={styles.logoBanner}></img>

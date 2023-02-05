@@ -4,8 +4,7 @@ import Info from '../../assets/Info.js'
 import Menu from '../../assets/Menu.js'
 import styles from './burger-menu.module.css'
 
-export const BurgerMenu = ({ darkMode }) => {
-    const [darkSwitch, setDarkSwitch] = useState(false);        // To capture switch to dark mode
+export const BurgerMenu = ({ darkModeFunction, darkMode }) => {
     const [showMenu, setShowMenu] = useState(false);            // To capture whether to show menu box or not
 
     // Toggle menu box
@@ -13,16 +12,11 @@ export const BurgerMenu = ({ darkMode }) => {
         setShowMenu((prevShowComponent) => !prevShowComponent);
     }
 
-    // Toggle dark mode
-    const toggleDarkMode = () => {
-        setDarkSwitch((prevDarkSetting) => !prevDarkSetting);
-    };
-
     const menu = 
-        <div className={`${styles.menuBox} ${darkSwitch ? styles.dark : ''}`}>
-            <div onClick={darkMode}>
-                <div className={styles.options} onClick={() => {toggleDarkMode();}}>
-                    <Moon darkMode={darkSwitch}></Moon>
+        <div className={`${styles.menuBox} ${darkMode ? styles.dark : ''}`}>
+            <div onClick={darkModeFunction}>
+                <div className={styles.options}>
+                    <Moon darkMode={darkMode}></Moon>
                     <p className={styles.optionText}>Dark mode</p>
                     <div className={styles.switchBase}>
                         <div className={styles.switch}></div>
@@ -30,7 +24,7 @@ export const BurgerMenu = ({ darkMode }) => {
                 </div>
             </div>
             <div className={styles.options}>
-                <Info darkMode={darkSwitch}></Info>
+                <Info darkMode={darkMode}></Info>
                 <p className={styles.optionText}>Help</p>
             </div>
             <div className={styles.options}>
@@ -41,8 +35,8 @@ export const BurgerMenu = ({ darkMode }) => {
     // Return menu box upon toggle
     return (
         <div>
-            <div className={styles.menu} onClick={handleMenu}>
-                <Menu darkMode={darkSwitch}></Menu>
+            <div className={`${styles.menu} ${darkMode ? styles.darkMenuHover : ''}`} onClick={handleMenu}>
+                <Menu darkMode={darkMode}></Menu>
             </div>
             {showMenu && menu}
         </div>
