@@ -145,6 +145,7 @@
 
 .flagDisplay {
     position: relative;
+    justify-content: space-between;
     width: 6em;
     display: flex;
     margin-left: auto;
@@ -153,9 +154,15 @@
 
 .flagPlacement {
     position: relative;
+    background-color: hsl(203, 100%, 87%);
+    border-radius: 50%;
     display: flex;
     height: 46px;
     width: 46px;
+}
+
+.dark .flagPlacement {
+    background-color: rgb(30, 41, 93) !important;
 }
 
 .flags {
