@@ -1,11 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import styles from './loading-screen.module.css'
+
 import { ReactComponent as Wave } from '../../assets/path.svg'
 import Boat from '../../assets/Boat'
 import Button from '../button/button'
 import Flag from 'react-flagkit';
+import NoSymbol from '../../assets/No-Symbol.svg';
 
 const LoadingScreen = ({countryOne, countryTwo, darkMode}) => {
+  const [showError, setShowError] = useState(false);
+  const navigate = useNavigate();     
+  
+  useEffect(() => {
+    if (navigator.onLine) {
+      const timeOut = setTimeout(() => {
+        //navigate('/info');
+      }, 5000); 
+
+      return () => {
+        clearTimeout(timeOut);
+      };
+    } else {
+      setShowError(true);
+    }
+  }, [navigate]);
+
   return (
     <div className={`${styles.canvas} ${darkMode ? styles.dark : ''}`}>
       <div className={styles.mainSection}>
@@ -31,13 +51,13 @@ const LoadingScreen = ({countryOne, countryTwo, darkMode}) => {
                 </div>
               </div>
             </div>
-            <h2 className={styles.loading}>Loading</h2>
+            <h2 className={styles.loading}>{showError ? 'No connection. Please try again.' : 'Loading'}</h2>
             <div className={styles.flagDisplay}>
               <div className={styles.flagPlacement}>
-                <Flag country={countryOne.toUpperCase()} size={46} className={styles.flags} />
+              {showError ? <img src={NoSymbol} alt="NO" className={styles.flags} /> : <Flag country={countryOne.toUpperCase()} size={46} className={styles.flags} />}
               </div>
               <div className={styles.flagPlacement}>
-                <Flag country={countryTwo.toUpperCase()} size={46} className={styles.flags} />
+                {showError ? <img src={NoSymbol} alt="NO" className={styles.flags} /> : <Flag country={countryTwo.toUpperCase()} size={46} className={styles.flags} />}
               </div>
             </div>
           </div>
