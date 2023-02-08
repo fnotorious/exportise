@@ -45,6 +45,7 @@ const FrontPage = React.memo((props) => {
     }
 
     else {
+      props.handleSelection(selectedOption1, selectedOption2);
       navigate('/loading');
     }
   };

@@ -143,6 +143,31 @@
     margin-left: auto;
 }
 
+.flagDisplay {
+    position: relative;
+    width: 6em;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flagPlacement {
+    position: relative;
+    display: flex;
+    height: 46px;
+    width: 46px;
+}
+
+.flags {
+    position: absolute;
+    opacity: 0;
+    height: 46px;
+    width: 46px;
+    clip-path: circle(33%);
+    overflow: hidden;
+    animation: fade .5s 1s linear forwards;
+}
+
 @keyframes wave {
     0% {
         transform: translateX(-25%);

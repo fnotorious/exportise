@@ -8,9 +8,16 @@ function App() {
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState('home');
   const [darkMode, setDarkMode] = useState(false);
+  const [cntrySelectOne, setCntrySelectOne] = useState();
+  const [cntrySelectTwo, setCntrySelectTwo] = useState();
 
-  const handleChange = useCallback((newValue) => {
-    setDarkMode(newValue);
+  const handleChange = useCallback((darkMode) => {
+    setDarkMode(darkMode);
+  }, []);
+
+  const handleSelection = useCallback((cntrySelectOne, cntrySelectTwo) => {
+    setCntrySelectOne(cntrySelectOne);
+    setCntrySelectTwo(cntrySelectTwo);
   }, []);
 
   useEffect(() => {
@@ -21,8 +28,8 @@ function App() {
   return (
     <div className='App'>
       <Routes>
-        <Route path="/" element={<FrontPage currentPage={currentPage} handleChange={handleChange} darkMode={darkMode} />} />
-        <Route path="/loading" element={<LoadingScreen currentPage={currentPage} darkMode={darkMode} />} />
+        <Route path="/" element={<FrontPage currentPage={currentPage} handleChange={handleChange} handleSelection={handleSelection} darkMode={darkMode} />} />
+        <Route path="/loading" element={<LoadingScreen currentPage={currentPage} darkMode={darkMode} countryOne={cntrySelectOne} countryTwo={cntrySelectTwo} />} />
       </Routes>
     </div>
   )

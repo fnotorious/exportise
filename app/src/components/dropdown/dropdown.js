@@ -126,7 +126,7 @@ export const DropdownMenu = ({ darkMode, onChange }) => {
             <option value="tz" id="Tanzania">Tanzania</option>
             <option value="th" id="Thailand">Thailand</option>
             <option value="tg" id="Togo">Togo</option>
-            <option value="tt" id="Trinvaluead and Tobago">Trinvaluead and Tobago</option>
+            <option value="tt" id="Trinidad and Tobago">Trinidad and Tobago</option>
             <option value="tn" id="Tunisia">Tunisia</option>
             <option value="tr" id="Turkey">Turkey</option>
             <option value="tm" id="Turkmenistan">Turkmenistan</option>

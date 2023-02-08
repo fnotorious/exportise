@@ -3,8 +3,9 @@ import styles from './loading-screen.module.css'
 import { ReactComponent as Wave } from '../../assets/path.svg'
 import Boat from '../../assets/Boat'
 import Button from '../button/button'
+import Flag from 'react-flagkit';
 
-const LoadingScreen = ({darkMode}) => {
+const LoadingScreen = ({countryOne, countryTwo, darkMode}) => {
   return (
     <div className={`${styles.canvas} ${darkMode ? styles.dark : ''}`}>
       <div className={styles.mainSection}>
@@ -31,6 +32,14 @@ const LoadingScreen = ({darkMode}) => {
               </div>
             </div>
             <h2 className={styles.loading}>Loading</h2>
+            <div className={styles.flagDisplay}>
+              <div className={styles.flagPlacement}>
+                <Flag country={countryOne.toUpperCase()} size={46} className={styles.flags} />
+              </div>
+              <div className={styles.flagPlacement}>
+                <Flag country={countryTwo.toUpperCase()} size={46} className={styles.flags} />
+              </div>
+            </div>
           </div>
           <div className={styles.buttonPlacement}>
             <Button name="Cancel" navigateTo='/'></Button>
