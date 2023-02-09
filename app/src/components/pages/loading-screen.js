@@ -36,6 +36,7 @@ const LoadingScreen = ({countryOne, countryTwo, darkMode}) => {
                 <Boat darkMode={darkMode}></Boat>
               </div>
               <div className={styles.waves}>
+                <div className={styles.hiddenWave}></div>
                 <div className={styles.hiddenRect}></div>
                 <div className={styles.wave}>
                   <div className={styles.waveBox}></div>
@@ -51,13 +52,13 @@ const LoadingScreen = ({countryOne, countryTwo, darkMode}) => {
                 </div>
               </div>
             </div>
-            <h2 className={styles.loading}>{showError ? 'No connection. Please try again.' : 'Loading'}</h2>
+            <h2 className={styles.loading}>{showError ? 'No connection. Make sure your internet is on and try again.' : 'Loading'}</h2>
             <div className={styles.flagDisplay}>
               <div className={styles.flagPlacement}>
-              {showError ? <img src={NoSymbol} alt="NO" className={styles.flags} /> : <Flag country={countryOne.toUpperCase()} size={46} className={styles.flags} />}
+              {showError ? <img src={NoSymbol} alt="NO" /> : <Flag country={countryOne.toUpperCase()} size={46} className={styles.flags} />}
               </div>
               <div className={styles.flagPlacement}>
-                {showError ? <img src={NoSymbol} alt="NO" className={styles.flags} /> : <Flag country={countryTwo.toUpperCase()} size={46} className={styles.flags} />}
+                {showError ? <img src={NoSymbol} alt="NO" /> : <Flag country={countryTwo.toUpperCase()} size={46} className={styles.flags} />}
               </div>
             </div>
           </div>
