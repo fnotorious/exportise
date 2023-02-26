@@ -76,7 +76,7 @@ const FrontPage = React.memo((props) => {
                     </div>
                     <div className={styles.inputTextSection}>
                       <h2 className={styles.letsCompare}>Let's compare:</h2>
-                      <h3 className={styles.and}>and...</h3>
+                      <h3 className={styles.and}>with</h3>
                     </div>
                     <div className={styles.menuTwo}>
                       <DropdownMenu darkMode={props.darkMode} onChange={handleOption2Change}></DropdownMenu>

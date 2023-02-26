@@ -11,13 +11,13 @@
     text-align: center;
     display: inline-block;
     cursor: pointer;
-    border-radius: 1em;
+    border-radius: .5em;
     transition: all 0.5s;
     font-family: 'Bahnscrhift';
     font-weight: 500;
-    font-size: 1.3em;
-    width: 6.2em;
-    height: 2.3em;
+    font-size: 1.4em;
+    width: 6.6em;
+    height: 2.4em;
   }
 
   .button:hover {

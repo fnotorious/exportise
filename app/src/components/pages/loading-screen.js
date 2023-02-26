@@ -15,7 +15,7 @@ const LoadingScreen = ({countryOne, countryTwo, darkMode}) => {
   useEffect(() => {
     if (navigator.onLine) {
       const timeOut = setTimeout(() => {
-        //navigate('/info');
+        navigate('/info');
       }, 5000); 
 
       return () => {
@@ -39,15 +39,15 @@ const LoadingScreen = ({countryOne, countryTwo, darkMode}) => {
                 <div className={styles.hiddenWave}></div>
                 <div className={styles.hiddenRect}></div>
                 <div className={styles.wave}>
-                  <div className={styles.waveBox}></div>
+                  <div className={`${styles.waveBox} ${styles.animOne}`}></div>
                   <Wave></Wave>
                 </div>
                 <div className={`${styles.wave} ${styles.wave2}`}>
-                  <div className={styles.waveBox}></div>
+                  <div className={`${styles.waveBox} ${styles.animTwo}`}></div>
                   <Wave></Wave>
                 </div>
                 <div className={`${styles.wave} ${styles.wave3}`}>
-                  <div className={styles.waveBox}></div>
+                  <div className={`${styles.waveBox} ${styles.animOne}`}></div>
                   <Wave></Wave>
                 </div>
               </div>

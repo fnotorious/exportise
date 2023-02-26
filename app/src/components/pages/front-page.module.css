@@ -123,7 +123,7 @@
 .letsCompare {
     position: absolute;
     font-family: 'Bahnscrhift';
-    font-size: 2em;
+    font-size: 1.6em;
     color: #a8a8a8;
     margin-top: 0em;
     left: 0; 
@@ -139,7 +139,7 @@
 h3 {
     position: relative;
     font-family: 'Bahnscrhift';
-    font-size: 1.5em;
+    font-size: 1.4em;
     color: #a8a8a8;
 }
 
@@ -176,19 +176,19 @@ h3 {
 
 .compareButton {
     background-color: hsl(203, 100%, 73%);
-    height: 2.2em;
+    height: 2.4em;
     width: 9em;
     border: none;
     color: white;
     text-align: center;
     display: inline-block;
     cursor: pointer;
-    border-radius: 1em;
+    border-radius: .5em;
     transition: all 0.5s;
     position: relative;
     font-family: 'Bahnschrift';
     font-weight: 1000;
-    font-size: 1.6em;
+    font-size: 1.4em;
     outline: none;
   }
 
