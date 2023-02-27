@@ -72,14 +72,14 @@ const FrontPage = React.memo((props) => {
                   <div className={styles.logoText}>Comparing trade and economy between nations</div>
                   <div className={styles.inputSection}>
                     <div className={styles.menuOne}>
-                      <DropdownMenu darkMode={props.darkMode} onChange={handleOption1Change}></DropdownMenu>
+                      <DropdownMenu darkMode={props.darkMode} size="long" onChange={handleOption1Change}></DropdownMenu>
                     </div>
                     <div className={styles.inputTextSection}>
                       <h2 className={styles.letsCompare}>Let's compare:</h2>
                       <h3 className={styles.and}>with</h3>
                     </div>
                     <div className={styles.menuTwo}>
-                      <DropdownMenu darkMode={props.darkMode} onChange={handleOption2Change}></DropdownMenu>
+                      <DropdownMenu darkMode={props.darkMode} size="long" onChange={handleOption2Change}></DropdownMenu>
                     </div>
                   </div>
                   <button className={styles.compareButton} onClick={handleSubmit}>Compare!</button>

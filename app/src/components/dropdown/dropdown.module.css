@@ -5,43 +5,50 @@
 }
 
 .input {
-    position: relative;
-    display: inline-block;
-    border: .12em solid #ccc;
-    width: 32em;
-    height: 2.5em;
-    border-radius: .5em;
-    padding: .5em;
-    background: #ececec;
-    overflow: hidden;
-  }
+  position: relative;
+  display: inline-block;
+  border: .12em solid #ccc;
+  height: 2.5em;
+  border-radius: .5em;
+  padding: .5em;
+  background: #ececec;
+  overflow: hidden;
+}
 
-  .input select {
-    padding: 5em;
-    width: 100%;
-    border: none;
-    box-shadow: none;
-    background: transparent;
-  }
+.inputLong {
+  width: 32em; 
+}
 
-  .input select:focus {
-    outline: none;
-  }
+.inputShort {
+  width: 18em;
+}
 
-  @media (max-width: 1420px) {
-    .input {
-      width: 28em;
-    }
+.input select {
+  height: 1em;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.input select:focus {
+  outline: none;
+}
+
+@media (max-width: 1420px) {
+  .inputLong {
+    width: 28em;
   }
+}
   
-  @media (max-width: 1280px) {
-    .input {
-      width: 24em;
-    }
+@media (max-width: 1280px) {
+  .inputLong {
+    width: 24em;
   }
+}
   
   @media (max-width: 1140px) {
-    .input {
+    .inputLong {
       width: 20em;
     }
   }
