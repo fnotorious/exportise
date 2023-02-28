@@ -31,7 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<FrontPage currentPage={currentPage} handleChange={handleChange} handleSelection={handleSelection} darkMode={darkMode} />} />
         <Route path="/loading" element={<LoadingScreen currentPage={currentPage} darkMode={darkMode} countryOne={cntrySelectOne} countryTwo={cntrySelectTwo} />} />
-        <Route path="/info" element={<InfoPage currentPage={currentPage} darkMode={darkMode} countryOne={cntrySelectOne} countryTwo={cntrySelectTwo} />} />
+        <Route path="/info" element={<InfoPage currentPage={currentPage} handleChange={handleChange} handleSelection={handleSelection} darkMode={darkMode} countryOne={cntrySelectOne} countryTwo={cntrySelectTwo} />} />
       </Routes>
     </div>
   )

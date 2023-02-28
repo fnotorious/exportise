@@ -1,17 +1,23 @@
 .darkInput {
   border: #344493 !important;
-  background: #2b336f !important;
+  background: #2b336f url("../../assets/arrow-down.svg") no-repeat 100% 10% !important;
+  background-position: right 8px center !important;
   color: white;
 }
 
 .input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   position: relative;
   display: inline-block;
   border: .12em solid #ccc;
-  height: 2.5em;
+  height: 2.6em;
   border-radius: .5em;
-  padding: .5em;
-  background: #ececec;
+  padding: 0 1em;
+  background: #ececec url("../../assets/arrow-down.svg") no-repeat 100% 10%;
+  background-position: right 8px center;
+  
   overflow: hidden;
 }
 

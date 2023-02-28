@@ -1,0 +1,56 @@
+.dark {
+    color: #344493 !important;
+}
+
+.recents {
+    position: relative;
+    border: 0;
+    font-family: 'Bahnschrift';
+    font-weight: bold;
+    font-size: .9em;
+    display: flex;
+    align-items: center;
+    color: #a8a8a8;
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.recents:hover {
+    transition: all 0.3s;
+    color: hsl(203, 100%, 73%);
+}
+
+.arrow {
+    padding: 0 0 0 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.clock {
+    padding: 0 7px 0 0;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.menuBox {
+    position: absolute;
+    margin-top: 3em;
+    margin-left: -9em;
+    padding: .4em;
+    width: 11em;
+    display: inline-block;
+    border-radius: .5em;
+    border: .12em solid #ccc;
+    background-color: hsl(0, 0%, 100%);
+    text-align: left;
+    color: #a8a8a8;
+    font-size: .9em;
+    font-family: 'Bahnschrift';
+  }
+
+  .darkMenuBox {
+    background-color: rgb(8, 14, 41) !important;
+    border: .12em solid rgb(52, 68, 147) !important;
+    color: rgb(52, 68, 147) !important;
+  }

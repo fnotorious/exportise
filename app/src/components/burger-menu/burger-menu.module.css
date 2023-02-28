@@ -51,6 +51,7 @@
     background-color: hsl(0, 0%, 100%);
     text-align: left;
     color: #a8a8a8;
+    font-size: .9em;
     font-family: 'Bahnschrift';
   }
 
@@ -63,10 +64,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    transition: all 0.5s;
   }
 
   .options:hover {
+    transition: all 0.3s;
     color: hsl(203, 100%, 73%);
   }
 
