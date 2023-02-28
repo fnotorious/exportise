@@ -18,7 +18,7 @@
 
 .recents:hover {
     transition: all 0.3s;
-    color: hsl(203, 100%, 73%);
+    color: hsl(203, 100%, 73%) !important;
 }
 
 .arrow {
@@ -28,29 +28,93 @@
 }
 
 .clock {
-    padding: 0 7px 0 0;
+    padding: 0 8px 0 0;
     margin-top: auto;
     margin-bottom: auto;
 }
 
 .menuBox {
     position: absolute;
-    margin-top: 3em;
+    margin-top: 1em;
     margin-left: -9em;
-    padding: .4em;
+    padding: .6em;
     width: 11em;
     display: inline-block;
     border-radius: .5em;
     border: .12em solid #ccc;
     background-color: hsl(0, 0%, 100%);
-    text-align: left;
     color: #a8a8a8;
     font-size: .9em;
     font-family: 'Bahnschrift';
-  }
+}
 
-  .darkMenuBox {
+.empty {
+    position: relative;
+    width: 5em;
+    margin-left: .3em;
+    margin: auto;
+}
+
+.buttons {
+    position: relative;
+    margin: auto;
+}
+
+.option {
+    height: 3em;
+    width: 11em;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.optionText {
+    display: flex;
+    margin: auto;
+    text-align: center;
+}
+
+.option:hover {
+    transition: all 0.3s;
+    color: hsl(203, 100%, 73%);
+}
+
+.option span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    outline: none;
+}
+
+.flagPlacement {
+    opacity: 1;
+    position: relative;
+    background-color: hsl(203, 100%, 87%);
+    border-radius: 50%;
+    display: flex;
+    height: 40px;
+    width: 40px;
+    margin: 0 5px;
+}
+
+.darkMenuBox .flagPlacement {
+    background-color: rgb(30, 41, 93) !important;
+}
+
+.flags {
+    position: absolute;
+    opacity: 1;
+    height: 40px;
+    width: 40px;
+    clip-path: circle(33%);
+    overflow: hidden;
+}
+
+.darkMenuBox {
     background-color: rgb(8, 14, 41) !important;
     border: .12em solid rgb(52, 68, 147) !important;
     color: rgb(52, 68, 147) !important;
-  }
+}

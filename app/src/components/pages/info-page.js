@@ -10,6 +10,11 @@ import { BurgerMenu } from '../burger-menu/burger-menu'
 const InfoPage = React.memo((props) => {
   const [selectedOption1, setSelectedOption1] = useState('');     // To capture selection from dropdown menu on left
   const [selectedOption2, setSelectedOption2] = useState('');     // To capture selection from dropdown menu on right
+  const [recents, setRecents] = useState([
+    ["", ""],
+    ["", ""],
+    ["", ""]
+  ])
 
   const navigate = useNavigate();                                 // To navigate to next page
 
@@ -45,6 +50,15 @@ const InfoPage = React.memo((props) => {
 
     else {
       props.handleSelection(selectedOption1, selectedOption2);
+
+      setRecents((prevRecents) => {
+        const newRecents = [...prevRecents];
+        newRecents[2] = newRecents[1];
+        newRecents[1] = newRecents[0];
+        newRecents[0] = [selectedOption1, selectedOption2];
+        return newRecents;
+      });
+
       navigate('/info');
     }
   };
@@ -61,7 +75,7 @@ const InfoPage = React.memo((props) => {
         <div className={styles.navBarSection}>
           <div className={styles.buttons}>
             <div className={styles.navItem}>
-              <Recent darkMode={props.darkMode}></Recent>
+              <Recent array={recents} darkMode={props.darkMode}></Recent>
             </div>
             <div className={`${styles.dropdown} ${styles.navItem}`}>
               <DropdownMenu darkMode={props.darkMode} size="short" onChange={handleOption1Change}></DropdownMenu>
