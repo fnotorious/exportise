@@ -68,12 +68,21 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: auto;
 }
 
-.optionText {
+.optionContent {
     display: flex;
     margin: auto;
     text-align: center;
+}
+
+.countryText {
+    width: 2em;
+    height: 1.3em;
+    position: relative;
+    margin-bottom: auto;
+    margin-top: auto;
 }
 
 .option:hover {
@@ -97,7 +106,7 @@
     display: flex;
     height: 40px;
     width: 40px;
-    margin: 0 5px;
+    margin: auto 5px;
 }
 
 .darkMenuBox .flagPlacement {
@@ -113,8 +122,23 @@
     overflow: hidden;
 }
 
+.option:first-child .flags {
+    opacity: 0;
+}
+
+.fadeIn {
+    animation: fade 1s ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
 .darkMenuBox {
     background-color: rgb(8, 14, 41) !important;
     border: .12em solid rgb(52, 68, 147) !important;
     color: rgb(52, 68, 147) !important;
+}
+
+@keyframes fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }

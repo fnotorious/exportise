@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styles from './info-page.module.css'
 import banner from '../../assets/ITSCHRISTMAS.png'
+import Flag from 'react-flagkit'
 
 import { Recent } from '../button/recent'
 import { DropdownMenu } from '../dropdown/dropdown'
@@ -11,7 +12,7 @@ const InfoPage = React.memo((props) => {
   const [selectedOption1, setSelectedOption1] = useState('');     // To capture selection from dropdown menu on left
   const [selectedOption2, setSelectedOption2] = useState('');     // To capture selection from dropdown menu on right
   const [recents, setRecents] = useState([
-    ["", ""],
+    [props.countryOne, props.countryTwo],
     ["", ""],
     ["", ""]
   ])
@@ -29,6 +30,10 @@ const InfoPage = React.memo((props) => {
   else if (selectedOption1 === 'none' || selectedOption2 === 'none' || selectedOption1 === '' || selectedOption2 === '') {
     errorFlag = true;
   }
+
+  else {
+    errorFlag = false;
+  }
   
   // Capture left dropdown menu selection
   const handleOption1Change = (event) => {
@@ -42,13 +47,7 @@ const InfoPage = React.memo((props) => {
 
   // Submit and check for errors upon submit
   const handleSubmit = () => {
-    if (errorFlag) {
-      setTimeout(() => {
-        errorFlag = false;
-      }, 1500);
-    }
-
-    else {
+    if (errorFlag === false) {
       props.handleSelection(selectedOption1, selectedOption2);
 
       setRecents((prevRecents) => {
@@ -97,7 +96,10 @@ const InfoPage = React.memo((props) => {
           </div>
         </div>
       </div>
-      <div className={styles.mainSection}></div>
+      <div className={styles.mainSection}>
+        <Flag country={props.countryOne.toUpperCase()} size={40} className={styles.flags} />
+        <Flag country={props.countryTwo.toUpperCase()} size={40} className={styles.flags} />
+      </div>
     </div>
   )
 })

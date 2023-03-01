@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from './recent.module.css'
 
 import { Arrow } from '../../assets/Arrow'
@@ -7,71 +7,86 @@ import Flag from 'react-flagkit'
 
 export const Recent = React.memo((props) => {
     const [showMenu, setShowMenu] = useState(false);            // To capture whether to show menu box or not
+    const prevArrayRef = useRef(props.array);
+    const [arrayHasChanged, setArrayHasChanged] = useState(true);
 
     // Toggle menu box
     const handleMenu = () => {
         setShowMenu((prevShowComponent) => !prevShowComponent);
     }
 
+    useEffect(() => {
+        if (prevArrayRef.current !== props.array) {
+          setArrayHasChanged(false);
+          prevArrayRef.current = props.array;
+        }
+      }, [props.array]);
+
+      useEffect(() => {
+        if (arrayHasChanged === false) {
+          const timer = setTimeout(() => {
+            setArrayHasChanged(true);
+          }, 800);
+          return () => clearTimeout(timer);
+        }
+      }, [arrayHasChanged]);
+
     const menu = 
         <div className={`${styles.menuBox} ${props.darkMode ? styles.darkMenuBox : ''}`}>
-            {props.array[0][0] === "" ? <div className={styles.empty}>No recents</div> : 
-                <div className={styles.buttons}>
-                    <div className={styles.option}>
-                        <div className={styles.optionText}>
-                            <div className={styles.optionText}>
-                                {props.array[0][0].toUpperCase()}
-                            </div>
-                            <div className={styles.flagPlacement}>
-                                <Flag country={props.array[0][0].toUpperCase()} size={40} className={styles.flags} />
-                            </div>
-                            <div className={styles.flagPlacement}>
-                                <Flag country={props.array[0][1].toUpperCase()} size={40} className={styles.flags} />
-                            </div>
-                            <div className={styles.optionText}>
-                                {props.array[0][1].toUpperCase()}
-                            </div>
+            <div className={styles.buttons}>
+                <div className={styles.option}>
+                    <div className={styles.optionContent}>
+                        <div className={styles.countryText}>
+                            {props.array[0][0].toUpperCase()}
+                        </div>
+                        <div className={styles.flagPlacement}>
+                            <Flag country={props.array[0][0].toUpperCase()} size={40} className={`${styles.flags} ${arrayHasChanged ? styles.fadeIn : ''}`} />
+                        </div>
+                        <div className={styles.flagPlacement}>
+                            <Flag country={props.array[0][1].toUpperCase()} size={40} className={`${styles.flags} ${arrayHasChanged ? styles.fadeIn : ''}`} />
+                        </div>
+                        <div className={styles.countryText}>
+                            {props.array[0][1].toUpperCase()}
                         </div>
                     </div>
-                    {props.array[1][0] === "" ? '' :  
-                    <div className={styles.option}>
-                        <div className={styles.optionText}>
-                            <div className={styles.optionText}>
-                                {props.array[1][0].toUpperCase()}
-                            </div>
-                            <div className={styles.flagPlacement}>
-                                <Flag country={props.array[1][0].toUpperCase()} size={40} className={styles.flags} />
-                            </div>
-                            <div className={styles.flagPlacement}>
-                                <Flag country={props.array[1][1].toUpperCase()} size={40} className={styles.flags} />
-                            </div>
-                            <div className={styles.optionText}>
-                                {props.array[1][1].toUpperCase()}
-                            </div>
-                        </div>
-                    </div>
-                    }
-                    {props.array[2][0] === "" ? '' :  
-                    <div className={styles.option}>
-                        <div className={styles.optionText}>
-                            <div className={styles.optionText}>
-                                {props.array[2][0].toUpperCase()}
-                            </div>
-                            <div className={styles.flagPlacement}>
-                                <Flag country={props.array[2][0].toUpperCase()} size={40} className={styles.flags} />
-                            </div>
-                            <div className={styles.flagPlacement}>
-                                <Flag country={props.array[2][1].toUpperCase()} size={40} className={styles.flags} />
-                            </div>
-                            <div className={styles.optionText}>
-                                {props.array[2][1].toUpperCase()}
-                            </div>
-                        </div>
-                    </div> 
-                    }
                 </div>
-            }
-
+                {props.array[1][0] === "" ? '' :  
+                <div className={styles.option}>
+                    <div className={styles.optionContent}>
+                        <div className={styles.countryText}>
+                            {props.array[1][0].toUpperCase()}
+                        </div>
+                        <div className={styles.flagPlacement}>
+                            <Flag country={props.array[1][0].toUpperCase()} size={40} className={styles.flags} />
+                        </div>
+                        <div className={styles.flagPlacement}>
+                            <Flag country={props.array[1][1].toUpperCase()} size={40} className={styles.flags} />
+                        </div>
+                        <div className={styles.countryText}>
+                            {props.array[1][1].toUpperCase()}
+                        </div>
+                    </div>
+                </div>
+                }
+                {props.array[2][0] === "" ? '' :  
+                <div className={styles.option}>
+                    <div className={styles.optionContent}>
+                        <div className={styles.countryText}>
+                            {props.array[2][0].toUpperCase()}
+                        </div>
+                        <div className={styles.flagPlacement}>
+                            <Flag country={props.array[2][0].toUpperCase()} size={40} className={styles.flags} />
+                        </div>
+                        <div className={styles.flagPlacement}>
+                            <Flag country={props.array[2][1].toUpperCase()} size={40} className={styles.flags} />
+                        </div>
+                        <div className={styles.countryText}>
+                            {props.array[2][1].toUpperCase()}
+                        </div>
+                    </div>
+                </div> 
+                }
+            </div>
         </div>;
 
     return (

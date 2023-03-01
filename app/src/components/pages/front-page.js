@@ -29,6 +29,10 @@ const FrontPage = React.memo((props) => {
     errorFlag = true;
   }
 
+  else {
+    errorFlag = false;
+  }
+
   // Toggle dark mode for this page and all other pages in the app
   const toggleDarkMode = () => {
     props.handleChange(!props.darkMode);
@@ -40,11 +44,10 @@ const FrontPage = React.memo((props) => {
       setShowError(true);
       setTimeout(() => {
         setShowError(false);
-        errorFlag = false;
       }, 1500);
     }
 
-    else {
+    if (errorFlag === false) {
       props.handleSelection(selectedOption1, selectedOption2);
       navigate('/loading');
     }
