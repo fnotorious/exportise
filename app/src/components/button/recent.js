@@ -31,10 +31,31 @@ export const Recent = React.memo((props) => {
         }
       }, [arrayHasChanged]);
 
+    const renderFlags = (paramOne, paramTwo) => {
+        return (
+        <div className={styles.option} onClick={() => props.handleSelection(paramOne, paramTwo)}>
+            <div className={styles.optionContent}>
+                <div className={styles.countryText}>
+                    {paramOne.toUpperCase()}
+                </div>
+                <div className={styles.flagPlacement}>
+                    <Flag country={paramOne.toUpperCase()} size={40} className={`${styles.flags}`} />
+                </div>
+                <div className={styles.flagPlacement}>
+                    <Flag country={paramTwo.toUpperCase()} size={40} className={`${styles.flags}`} />
+                </div>
+                <div className={styles.countryText}>
+                    {paramTwo.toUpperCase()}
+                </div>
+            </div>
+        </div>
+        );
+    }
+
     const menu = 
         <div className={`${styles.menuBox} ${props.darkMode ? styles.darkMenuBox : ''}`}>
             <div className={styles.buttons}>
-                <div className={styles.option}>
+                <div className={styles.option} onClick={() => props.handleSelection(props.array[0][0].toUpperCase(), props.array[0][1].toUpperCase())}>
                     <div className={styles.optionContent}>
                         <div className={styles.countryText}>
                             {props.array[0][0].toUpperCase()}
@@ -50,42 +71,8 @@ export const Recent = React.memo((props) => {
                         </div>
                     </div>
                 </div>
-                {props.array[1][0] === "" ? '' :  
-                <div className={styles.option}>
-                    <div className={styles.optionContent}>
-                        <div className={styles.countryText}>
-                            {props.array[1][0].toUpperCase()}
-                        </div>
-                        <div className={styles.flagPlacement}>
-                            <Flag country={props.array[1][0].toUpperCase()} size={40} className={styles.flags} />
-                        </div>
-                        <div className={styles.flagPlacement}>
-                            <Flag country={props.array[1][1].toUpperCase()} size={40} className={styles.flags} />
-                        </div>
-                        <div className={styles.countryText}>
-                            {props.array[1][1].toUpperCase()}
-                        </div>
-                    </div>
-                </div>
-                }
-                {props.array[2][0] === "" ? '' :  
-                <div className={styles.option}>
-                    <div className={styles.optionContent}>
-                        <div className={styles.countryText}>
-                            {props.array[2][0].toUpperCase()}
-                        </div>
-                        <div className={styles.flagPlacement}>
-                            <Flag country={props.array[2][0].toUpperCase()} size={40} className={styles.flags} />
-                        </div>
-                        <div className={styles.flagPlacement}>
-                            <Flag country={props.array[2][1].toUpperCase()} size={40} className={styles.flags} />
-                        </div>
-                        <div className={styles.countryText}>
-                            {props.array[2][1].toUpperCase()}
-                        </div>
-                    </div>
-                </div> 
-                }
+                {props.array[1][0] === "" ? '' : renderFlags(props.array[1][0], props.array[1][1])}
+                {props.array[2][0] === "" ? '' : renderFlags(props.array[2][0], props.array[2][1])}
             </div>
         </div>;
 

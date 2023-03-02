@@ -57,9 +57,23 @@ const InfoPage = React.memo((props) => {
         newRecents[0] = [selectedOption1, selectedOption2];
         return newRecents;
       });
-
+      
       navigate('/info');
     }
+  };
+
+  const handleRecentsSubmit = (countryOne, countryTwo) => {
+    props.handleSelection(countryOne, countryTwo);
+
+    setRecents((prevRecents) => {
+      const newRecents = [...prevRecents];
+      newRecents[2] = newRecents[1];
+      newRecents[1] = newRecents[0];
+      newRecents[0] = [countryOne, countryTwo];
+      return newRecents;
+    });
+
+    navigate('/info');
   };
 
   // Toggle dark mode for this page and all other pages in the app
@@ -74,7 +88,7 @@ const InfoPage = React.memo((props) => {
         <div className={styles.navBarSection}>
           <div className={styles.buttons}>
             <div className={styles.navItem}>
-              <Recent array={recents} darkMode={props.darkMode}></Recent>
+              <Recent array={recents} handleSelection={handleRecentsSubmit} darkMode={props.darkMode}></Recent>
             </div>
             <div className={`${styles.dropdown} ${styles.navItem}`}>
               <DropdownMenu darkMode={props.darkMode} size="short" onChange={handleOption1Change}></DropdownMenu>
