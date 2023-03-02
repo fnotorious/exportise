@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './recent.module.css'
 
 import { Arrow } from '../../assets/Arrow'
@@ -6,9 +6,9 @@ import { Clock } from '../../assets/Clock'
 import Flag from 'react-flagkit'
 
 export const Recent = React.memo((props) => {
-    const [showMenu, setShowMenu] = useState(false);            // To capture whether to show menu box or not
-    const prevArrayRef = useRef(props.array);
+    const [showMenu, setShowMenu] = useState(false);                    // To capture whether to show menu box or not
     const [arrayHasChanged, setArrayHasChanged] = useState(true);
+    const [prevArray, setPrevArray] = useState(props.array);
 
     // Toggle menu box
     const handleMenu = () => {
@@ -16,11 +16,11 @@ export const Recent = React.memo((props) => {
     }
 
     useEffect(() => {
-        if (prevArrayRef.current !== props.array) {
+        if (prevArray !== props.array) {
           setArrayHasChanged(false);
-          prevArrayRef.current = props.array;
+          setPrevArray(props.array);
         }
-      }, [props.array]);
+      }, [prevArray, props.array]);
 
       useEffect(() => {
         if (arrayHasChanged === false) {
