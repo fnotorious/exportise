@@ -1,0 +1,132 @@
+@font-face {
+    font-family: 'Bahnscrhift';
+    src: url(../../assets/bahnschrift.woff);
+}
+
+.dark {
+    background-color: rgb(8, 14, 41) !important;
+}
+
+.navBar {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 5.2em;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.logoBanner {
+    position: absolute;
+    width: 9em;
+    height: 4em;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-left: .5em;
+
+}
+
+.navBarSection {
+    position: relative;
+    display: flex;
+    margin: auto !important;
+    height: 100%;
+    width: 75%;
+    background-color: transparent;
+}
+
+.burgerMenuBox {
+    position: absolute;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 0em;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 2.7em;
+    width: 3em;
+    display: flex;
+    background-color: transparent;
+}
+
+.buttons {
+    display: flex;
+    margin: auto;
+}
+
+.navItem {
+    padding: 0 1em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.arrow {
+    margin-left: .2em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.clock {
+    margin-right: .6em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.dropdown {
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.text {
+    position: relative;
+    font-family: 'Bahnschrift';
+    font-weight: bold;
+    font-size: .9em;
+    display: flex;
+    align-items: center;
+    color: #a8a8a8;
+    text-align: center;
+}
+
+.dark .text {
+    color: #344493 !important;
+}
+
+.compareButton {
+    background-color: hsl(203, 100%, 73%);
+    height: 2.5em;
+    width: 9em;
+    border: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: .5em;
+    transition: all 0.5s;
+    position: relative;
+    font-family: 'Bahnschrift';
+    font-weight: 1000;
+    font-size: .9em;
+    outline: none;
+}
+
+.compareButton:hover {
+    background-color: #fd777c;
+    color: white;
+    text-decoration: none;
+    outline: none;
+    transform: scale(1.06);
+    box-shadow: 0 5px 15px #fd777c;
+}
+
+.compareButton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    outline: none;
+}
