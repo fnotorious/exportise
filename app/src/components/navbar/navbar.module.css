@@ -55,6 +55,7 @@
 .buttons {
     display: flex;
     margin: auto;
+    width: 55em;
 }
 
 .navItem {

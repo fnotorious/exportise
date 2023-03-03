@@ -138,6 +138,27 @@
     color: rgb(52, 68, 147) !important;
 }
 
+.loader {
+    position: relative;
+    margin: auto;
+    border: 2.5px solid hsl(203, 100%, 73%);
+    border-left-color: transparent;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+  
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @keyframes fade {
     0% { opacity: 0; }
     100% { opacity: 1; }

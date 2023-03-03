@@ -3,12 +3,25 @@ import styles from './recent.module.css'
 
 import { Arrow } from '../../assets/Arrow'
 import { Clock } from '../../assets/Clock'
+import NoSymbol from '../../assets/No-Symbol.svg';
 import Flag from 'react-flagkit'
 
 export const Recent = React.memo((props) => {
     const [showMenu, setShowMenu] = useState(false);                    // To capture whether to show menu box or not
     const [arrayHasChanged, setArrayHasChanged] = useState(true);
     const [prevArray, setPrevArray] = useState(props.array);
+    const [showLoading, setShowLoading] = useState(false);
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+    useEffect(() => {
+        window.addEventListener("online", () => setIsOnline(true));
+        window.addEventListener("offline", () => setIsOnline(false));
+
+        return () => {
+        window.removeEventListener("online", () => setIsOnline(true));
+        window.removeEventListener("offline", () => setIsOnline(false));
+        };
+    }, []);
 
     // Toggle menu box
     const handleMenu = () => {
@@ -24,8 +37,10 @@ export const Recent = React.memo((props) => {
 
       useEffect(() => {
         if (arrayHasChanged === false) {
+          setShowLoading(true);  
           const timer = setTimeout(() => {
             setArrayHasChanged(true);
+            setShowLoading(false);
           }, 800);
           return () => clearTimeout(timer);
         }
@@ -39,10 +54,14 @@ export const Recent = React.memo((props) => {
                     {paramOne.toUpperCase()}
                 </div>
                 <div className={styles.flagPlacement}>
-                    <Flag country={paramOne.toUpperCase()} size={40} className={`${flag === 1 ? `${arrayHasChanged ? styles.fadeIn : ''}` : ''} ${styles.flags}`} />
+                    {isOnline === false ? <img src={NoSymbol} alt="NO"></img> : 
+                        showLoading && flag === 1 ? <div className={styles.loader}></div> :
+                            <Flag country={paramOne.toUpperCase()} size={40} className={`${flag === 1 ? `${arrayHasChanged ? styles.fadeIn : ''}` : ''} ${styles.flags}`} />}
                 </div>
                 <div className={styles.flagPlacement}>
-                    <Flag country={paramTwo.toUpperCase()} size={40} className={`${flag === 1 ? `${arrayHasChanged ? styles.fadeIn : ''}` : ''} ${styles.flags}`} />
+                    {isOnline === false ? <img src={NoSymbol} alt="NO"></img> :
+                        showLoading && flag === 1 ? <div className={styles.loader}></div> :
+                            <Flag country={paramTwo.toUpperCase()} size={40} className={`${flag === 1 ? `${arrayHasChanged ? styles.fadeIn : ''}` : ''} ${styles.flags}`} />}
                 </div>
                 <div className={styles.countryText}>
                     {paramTwo.toUpperCase()}

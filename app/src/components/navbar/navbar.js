@@ -82,7 +82,7 @@ export const Navbar = React.memo((props) => {
       };
 
   return (
-    <div className={styles.navBar}>
+    <div className={`${styles.navBar} ${props.darkMode ? styles.dark : ''}`}>
         <img src={banner} alt="BANNER" className={styles.logoBanner}></img>
         <div className={styles.navBarSection}>
           <div className={styles.buttons}>
