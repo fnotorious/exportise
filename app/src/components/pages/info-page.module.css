@@ -64,6 +64,7 @@
     margin-top: 0;
     margin-left: 0;
     left: 0;
+    filter: brightness(80%);
 }
 
 .fadeIn {
@@ -79,10 +80,10 @@
 
 .shadow {
     position: absolute;
-    opacity: 70%;
+    opacity: 80%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 33, 52, 0.8) 71.35%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 33, 52, 1) 70%);
     mix-blend-mode: darken;
 }
 
@@ -99,12 +100,16 @@
     bottom: 0;
     left: 0;
     right: 0;
-    border: 4px solid #a8a8a8;
-    border-left-color: transparent;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
+    background-color: #a8a8a8;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    animation: loader 1.5s ease-in-out infinite;
+}
+
+.dark .loader {
+    background-color: rgb(8, 14, 41);
+    animation: darkLoader 1.5s ease-in-out infinite;
 }
 
 .flagLoader {
@@ -128,6 +133,111 @@
     width: 190px;
     margin-left: 6em;
     margin-top: 1.6em;
+}
+
+.names {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 4.2em;
+    width: 20em;
+    left: 18em;
+    top: 3.5em;
+}
+
+.nameDisplay {
+    position: relative;
+    margin-left: 0;
+    margin-top: 0;
+    height: 2em;
+    width: 20em;
+}
+
+.nameLoader {
+    position: absolute;
+    background-color: #a8a8a8;
+    margin: auto;
+    margin-left: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 2em;
+    width: 20em;
+    border-radius: 5px;
+    animation: loader 1.5s ease-in-out infinite;
+}
+
+.dark .nameLoader {
+    background-color: #344493;
+    animation: darkLoader 1.5s ease-in-out infinite;
+}
+
+.name {
+    position: relative;
+    opacity: 0;
+    margin: auto;
+    margin-left: 0;
+    height: 2em;
+    width: 20em;
+    text-align: left;
+    font-size: 2em;
+    font-weight: 700;
+    color: white;
+    animation: fade 1s ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.nativeNameDisplay {
+    position: relative;
+    margin: auto;
+    margin-left: 0;
+    margin-bottom: 0;
+    height: 1.5em;
+    width: 18em;
+}
+
+.nativeNameLoader {
+    position: absolute;
+    background-color: #a8a8a8;
+    margin: auto;
+    margin-left: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 1.5em;
+    width: 18em;
+    border-radius: 5px;
+    animation: loader 1.5s ease-in-out infinite;
+}
+
+.dark .nativeNameLoader {
+    background-color: #344493;
+    animation: darkLoader 1.5s ease-in-out infinite;
+}
+
+.nativeName {
+    position: relative;
+    opacity: 0;
+    margin: auto;
+    margin-left: 0;
+    height: 1.5em;
+    width: 18em;
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: 400;
+    color: white;
+    animation: fade 1s ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.dark .name {
+    color: white !important;
+}
+
+.dark .nativeName {
+    color: white !important;
 }
 
 .flagPlacement {
@@ -168,7 +278,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    top: 1.5em;
+    top: 0;
     height: 150px;
     width: 150px;
 }
@@ -178,16 +288,23 @@
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @keyframes fade {
     0% { opacity: 0; }
     100% { opacity: 1; }
+}
+
+@keyframes loader {
+    0% { background-color: #a8a8a8; }
+    50% { background-color: #939393; }
+    100% { background-color: #a8a8a8; }
+}
+
+@keyframes darkLoader {
+    0% { background-color: #344493; }
+    50% { background-color: #233178; }
+    100% { background-color: #344493; }
 }
