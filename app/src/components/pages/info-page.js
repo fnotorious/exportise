@@ -3,6 +3,7 @@ import styles from './info-page.module.css'
 import Flag from 'react-flagkit'
 
 import NoSymbol from '../../assets/No-Symbol.svg';
+import { Banner } from '../banner/banner'
 import { Navbar } from '../navbar/navbar'
 
 const InfoPage = React.memo((props) => {
@@ -66,20 +67,7 @@ const InfoPage = React.memo((props) => {
     <div className={`${styles.canvas} ${props.darkMode ? styles.dark : ''}`}>
       <Navbar handleChange={props.handleChange} handleSelection={props.handleSelection} darkMode={props.darkMode} countryOne={props.countryOne} countryTwo={props.countryTwo}></Navbar>
       <div className={styles.section}>
-        <div className={styles.banner}>
-          {isOnline === false ? <h3>No connection</h3> : 
-            showLoading ? <div className={styles.loader}></div> : 
-              <img className={`${selectionChange ? styles.fadeIn : ''} ${styles.image}`} src={`https://cdn.jsdelivr.net/gh/fnotorious/exportecon-banners/${props.countryOne}.png`} alt=""></img>}
-          {showLoading === false ? <div className={styles.shadow}></div> : ''}
-          <div className={styles.names}>
-            <div className={styles.nameDisplay}>
-              {dataLoaded === false || isOnline === false ? <div className={styles.nameLoader}></div> : <h3 className={styles.name}>{data[0].name.common}</h3>}
-            </div>
-            <div className={styles.nativeNameDisplay}>
-              {dataLoaded === false || isOnline === false ? <div className={styles.nativeNameLoader}></div> : <h3 className={styles.nativeName}>{data[0].name.nativeName[Object.keys(data[0].name.nativeName)[0]].common}</h3>}
-            </div>
-          </div>
-        </div>
+        <Banner country={props.countryOne} countryNum={0} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Banner>
         <div className={styles.flagDisplay}>
           <div className={styles.flagPlacement}></div>
             {isOnline === false ? <img className={styles.error} src={NoSymbol} alt="NO"></img> :
@@ -88,20 +76,7 @@ const InfoPage = React.memo((props) => {
           </div>
       </div>
       <div className={styles.section}>
-        <div className={styles.banner}>
-          {isOnline === false ? <h3>No connection</h3> : 
-              showLoading ? <div className={styles.loader}></div> : 
-                <img className={`${selectionChange ? styles.fadeIn : ''} ${styles.image}`} src={`https://cdn.jsdelivr.net/gh/fnotorious/exportecon-banners/${props.countryTwo}.png`} alt=""></img>}
-          {showLoading === false ? <div className={styles.shadow}></div> : ''}
-          <div className={styles.names}>
-            <div className={styles.nameDisplay}>
-              {dataLoaded === false || isOnline === false ? <div className={styles.nameLoader}></div> : <h3 className={styles.name}>{data[1].name.common}</h3>}
-            </div>
-            <div className={styles.nativeNameDisplay}>
-              {dataLoaded === false || isOnline === false ? <div className={styles.nativeNameLoader}></div> : <h3 className={styles.nativeName}>{data[1].name.nativeName[Object.keys(data[1].name.nativeName)[0]].common}</h3>}
-            </div>
-          </div>
-        </div>
+      <Banner country={props.countryTwo} countryNum={1} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Banner>
         <div className={styles.flagDisplay}>
           <div className={styles.flagPlacement}></div>
             {isOnline === false ? <img className={styles.error} src={NoSymbol} alt="NO"></img> :

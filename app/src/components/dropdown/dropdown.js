@@ -93,6 +93,7 @@ export const DropdownMenu = ({ darkMode, onChange, size }) => {
             <option value="mz" id="Mozambique">Mozambique</option>
             <option value="mm" id="Myanmar">Myanmar</option>
             <option value="na" id="Namibia">Namibia</option>
+            <option value="np" id="Nepal">Nepal</option>
             <option value="nl" id="Netherlands">Netherlands</option>
             <option value="nz" id="New Zealand">New Zealand</option>
             <option value="ni" id="Nicaragua">Nicaragua</option>
