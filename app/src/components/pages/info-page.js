@@ -50,7 +50,7 @@ const InfoPage = React.memo((props) => {
         <div className={styles.banner}>
           {isOnline === false ? <h3>No connection</h3> : 
             showLoading ? <div className={styles.loader}></div> : 
-              <img className={`${selectionChange ? styles.fadeIn : ''} ${styles.image}`} src={sampleBanner} alt=""></img>}
+              <img className={`${selectionChange ? styles.fadeIn : ''} ${styles.image}`} src={`https://cdn.jsdelivr.net/gh/fnotorious/exportecon-banners/${props.countryOne}.png`} alt=""></img>}
           <div className={styles.shadow}></div>
         </div>
         <div className={styles.flagDisplay}>
@@ -64,7 +64,7 @@ const InfoPage = React.memo((props) => {
         <div className={styles.banner}>
           {isOnline === false ? <h3>No connection</h3> : 
               showLoading ? <div className={styles.loader}></div> : 
-                <img className={`${selectionChange ? styles.fadeIn : ''} ${styles.image}`} src={sampleBanner2} alt=""></img>}
+                <img className={`${selectionChange ? styles.fadeIn : ''} ${styles.image}`} src={`https://cdn.jsdelivr.net/gh/fnotorious/exportecon-banners/${props.countryTwo}.png`} alt=""></img>}
           <div className={styles.shadow}></div>
         </div>
         <div className={styles.flagDisplay}>

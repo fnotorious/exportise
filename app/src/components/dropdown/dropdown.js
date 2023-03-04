@@ -56,6 +56,7 @@ export const DropdownMenu = ({ darkMode, onChange, size }) => {
             <option value="gn" id="Guinea">Guinea</option>
             <option value="hn" id="Honduras">Honduras</option>
             <option value="hu" id="Hungary">Hungary</option>
+            <option value="is" id="Iceland">Iceland</option>
             <option value="in" id="India">India</option>
             <option value="id" id="Indonesia">Indonesia</option>
             <option value="ir" id="Iran">Iran</option>
