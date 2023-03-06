@@ -10,10 +10,10 @@ export const Banner = React.memo((props) => {
             {props.showLoading === false ? <div className={styles.shadow}></div> : ''}
             <div className={styles.names}>
                 <div className={styles.nameDisplay}>
-                    {props.dataLoaded === false || props.isOnline === false ? <div className={styles.nameLoader}></div> : <h3 className={styles.name}>{props.data[props.countryNum].name.common}</h3>}
+                    {props.dataLoaded === false || props.isOnline === false ? <div className={styles.nameLoader}></div> : <p className={styles.name}>{props.data[props.countryNum].name.common}</p>}
                 </div>
                 <div className={styles.nativeNameDisplay}>
-                    {props.dataLoaded === false || props.isOnline === false ? <div className={styles.nativeNameLoader}></div> : <h3 className={styles.nativeName}>{props.data[props.countryNum].name.nativeName[Object.keys(props.data[props.countryNum].name.nativeName)[0]].common}</h3>}
+                    {props.dataLoaded === false || props.isOnline === false ? <div className={styles.nativeNameLoader}></div> : <p className={styles.nativeName}>{props.data[props.countryNum].name.nativeName[Object.keys(props.data[props.countryNum].name.nativeName)[0]].common}</p>}
                 </div>
         </div>
     </div>

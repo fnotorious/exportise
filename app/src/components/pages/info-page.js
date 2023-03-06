@@ -1,9 +1,7 @@
 import  React, { useEffect, useState } from 'react'
 import styles from './info-page.module.css'
-import Flag from 'react-flagkit'
 
-import NoSymbol from '../../assets/No-Symbol.svg';
-import { Banner } from '../banner/banner'
+import { Section } from '../section/section'
 import { Navbar } from '../navbar/navbar'
 
 const InfoPage = React.memo((props) => {
@@ -66,24 +64,8 @@ const InfoPage = React.memo((props) => {
   return (
     <div className={`${styles.canvas} ${props.darkMode ? styles.dark : ''}`}>
       <Navbar handleChange={props.handleChange} handleSelection={props.handleSelection} darkMode={props.darkMode} countryOne={props.countryOne} countryTwo={props.countryTwo}></Navbar>
-      <div className={styles.section}>
-        <Banner country={props.countryOne} countryNum={0} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Banner>
-        <div className={styles.flagDisplay}>
-          <div className={styles.flagPlacement}></div>
-            {isOnline === false ? <img className={styles.error} src={NoSymbol} alt="NO"></img> :
-                showLoading ? <div className={styles.flagLoader}></div> :
-                    <Flag country={props.countryOne.toUpperCase()} size={185} className={`${selectionChange ? styles.fadeIn : ''} ${styles.flags}`} />}
-          </div>
-      </div>
-      <div className={styles.section}>
-      <Banner country={props.countryTwo} countryNum={1} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Banner>
-        <div className={styles.flagDisplay}>
-          <div className={styles.flagPlacement}></div>
-            {isOnline === false ? <img className={styles.error} src={NoSymbol} alt="NO"></img> :
-                showLoading ? <div className={styles.flagLoader}></div> :
-                    <Flag country={props.countryTwo.toUpperCase()} size={185} className={`${selectionChange ? styles.fadeIn : ''} ${styles.flags}`} />}
-        </div>
-      </div>
+      <Section countryNum={0} country={props.countryOne} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
+      <Section countryNum={1} country={props.countryTwo} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
       <div className={styles.mainSection}>
       
       </div>
