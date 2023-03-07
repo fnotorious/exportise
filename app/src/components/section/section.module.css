@@ -4,6 +4,7 @@
 
 .section {
     position: absolute;
+    z-index: 1;
     height: calc(100vh - 5.2em);
     margin-left: 2px;
     margin-right: 0;
@@ -187,6 +188,145 @@
 
 .dark h3 {
     color: #344493 !important;
+}
+
+.bar {
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 16.5em;
+    height: 1.4em;
+    width: 30em;
+    border-radius: 5px;
+    background-color: #ebeaea;
+    overflow: hidden;
+}
+
+.dark .bar {
+    background-color: #1b296e !important;
+}
+
+.timeContainer {
+    width: 105%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.timePeriod {
+    position: relative;
+    cursor: pointer;
+    height: 105%;
+    width: 5.26%;
+    text-align: left;
+}
+
+.timePeriod:first-child {
+    width: 10.52%;
+    text-align: center;
+}
+
+.timePeriod:last-child {
+    width: 10.52%;
+}
+
+.timePeriod:first-child .bigMark {
+    margin: auto;
+}
+
+.timePeriod:last-child .bigMark {
+    margin-left: 0;
+}
+
+.bigMark {
+    height: 85%;
+    width: .2em;
+    background-color: #a8a8a8;
+    margin-top: .06em !important;
+    margin-left: -.04em;
+    border-radius: 2px;
+}
+
+.littleMark {
+    height: 85%;
+    width: .1em;
+    background-color: #a8a8a8;
+    margin-top: .06em;
+    margin-left: 0;
+    border-radius: 2px;
+}
+
+.labels {
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: .5em;
+    height: 1.4em;
+    width: 30em;
+    border-radius: 5px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.year {
+    position: absolute;
+    color: #a8a8a8;
+    position: relative;
+    height: 105%;
+    width: 10%;
+    font-size: .8em;
+    text-align: center;
+}
+
+.dark .year {
+    color: #344493 !important;
+}
+
+.dark .littleMark {
+    background-color: #0d153a !important;
+}
+
+.dark .bigMark {
+    background-color: #0d153a !important;
+}
+
+.barForPointer {
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    left: 0;
+    right: 0;
+    height: 1.4em;
+    width: 30em;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+.pointer {
+    position: absolute;
+    z-index: 3;
+    left: 90.5%;
+    animation: fade 1s ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.pointerLabel {
+    position: absolute;
+    z-index: 4;
+    transition: 0.5s ease-in-out;
+    text-align: center;
+    top: 0.6em;
+    margin-right: auto;
+    margin-left: auto;
+    left: 0;
+    right: 0;
+}
+
+.dark .pointerLabel {
+    color: black;
 }
 
 @keyframes spin {
