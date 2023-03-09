@@ -196,7 +196,7 @@
     margin-left: auto;
     margin-top: 16.5em;
     height: 1.4em;
-    width: 30em;
+    width: 35em;
     border-radius: 5px;
     background-color: #ebeaea;
     overflow: hidden;
@@ -262,7 +262,7 @@
     margin-left: auto;
     margin-top: .5em;
     height: 1.4em;
-    width: 30em;
+    width: 35em;
     border-radius: 5px;
     background-color: transparent;
     display: flex;
@@ -299,7 +299,7 @@
     left: 0;
     right: 0;
     height: 1.4em;
-    width: 30em;
+    width: 35em;
     border-radius: 5px;
     background-color: transparent;
 }
@@ -307,7 +307,7 @@
 .pointer {
     position: absolute;
     z-index: 3;
-    left: 90.5%;
+    left: 91.3%;
     animation: fade 1s ease-in-out;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -327,11 +327,6 @@
 
 .dark .pointerLabel {
     color: black;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }
 
 @keyframes fade {

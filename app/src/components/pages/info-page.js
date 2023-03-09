@@ -12,6 +12,10 @@ const InfoPage = React.memo((props) => {
   const [firstRun, setFirstRun] = useState(true);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [data, setData] = useState(null);
+  const headers = {
+    'Cache-Control': 'no-cache',
+
+  }
 
   useEffect(() => {
     if (firstRun || (prevSelection[0] !== props.countryOne || prevSelection[1] !== props.countryTwo)) {
@@ -47,7 +51,7 @@ const InfoPage = React.memo((props) => {
     const fetchCountries = async () => {
       try {
         const [country1, country2] = await Promise.all([
-          fetch(`https://restcountries.com/v3.1/alpha/${props.countryOne}`).then((res) => res.json()),
+          fetch(`https://restcountries.com/v3.1/alpha/${props.countryOne}`, {  }).then((res) => res.json()),
           fetch(`https://restcountries.com/v3.1/alpha/${props.countryTwo}`).then((res) => res.json()),
         ]);
         setDataLoaded(true);
@@ -59,7 +63,7 @@ const InfoPage = React.memo((props) => {
     };
 
     fetchCountries();
-  }, [props.countryOne, props.countryTwo, data]);
+  }, []);
 
   return (
     <div className={`${styles.canvas} ${props.darkMode ? styles.dark : ''}`}>

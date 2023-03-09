@@ -18,6 +18,11 @@ function createWindow() {
     minHeight: 800,
   });
 
+  win.webContents.session.webRequest.onBeforeSendHeaders((details, callback) => {
+    details.requestHeaders['Access-Control-Allow-Origin'] = '*';
+    callback({ cancel: false, requestHeaders: details.requestHeaders });
+  });
+
   // and load the index.html of the app.
   // win.loadFile("index.html");
   win.loadURL(
