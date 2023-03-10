@@ -10,11 +10,6 @@ import { Banner } from '../banner/banner'
 import { PieChart } from '../pie-chart/pie-chart'
 
 export const Section = React.memo((props) => {
-    const [year, setYear] = useState(2020);
-    const [chartData, setChartData] = useState(null);
-    const [showError, setShowError] = useState(false);
-    const API_KEY = '562a82ab18f844f78e5591084963c499';
-
     function handleYearChange(newYear) {
         const element = document.querySelectorAll('#pointer')[props.countryNum];
         let point = 5 * (newYear - 2002) + 1.3;
@@ -24,27 +19,8 @@ export const Section = React.memo((props) => {
             element.style.left = point+'%';
         }
 
-        setYear(newYear);
+        props.setNewYear(newYear, props.countryNum);
     }
-
-    useEffect(() => {
-        const fetchExportData = async () => {
-            if (props.data && props.data.length > 0) {
-                fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=S2&ps=${year}&r=${props.data[props.countryNum].ccn3}&p=0&rg=2&cc=ALL&fmt=json&max=5000&token=${API_KEY}`)
-                .then(response => response.json())
-                .then(data => {
-                    setChartData(data.dataset);
-                    console.log(chartData);
-                })
-                .catch(error => {
-                    console.error(error);
-                    setShowError(true);
-                });
-            }
-        };
-
-        fetchExportData();
-    }, [year, props.data, props.countryNum])
 
     useEffect(() => {
         if (props.selectionChange) {
@@ -166,7 +142,7 @@ export const Section = React.memo((props) => {
         </div>
         <div className={styles.barForPointer}>
         <div className={styles.pointer} id="pointer">
-            <p className={styles.pointerLabel}>{year}</p>
+            <p className={styles.pointerLabel}>{props.year}</p>
             <Pointer darkMode={props.darkMode} />
         </div>
         </div>
