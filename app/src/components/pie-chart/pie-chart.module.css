@@ -1,0 +1,12 @@
+.canvas {
+    position: relative;
+    width: 35em;
+    height: 26.5em;
+    margin: auto;
+    display: flex;
+}
+
+.loading {
+    position: relative;
+    margin: auto;
+}

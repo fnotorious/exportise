@@ -10,6 +10,7 @@ const InfoPage = React.memo((props) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [prevSelection, setPrevSelection] = useState([props.countryOne, props.countryTwo]);
   const [selectionChange, setSelectionChange] = useState(true);
+  const [sendReq, setSendReq] = useState(true);
   const [firstRun, setFirstRun] = useState(true);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [data, setData] = useState(null);
@@ -17,7 +18,7 @@ const InfoPage = React.memo((props) => {
   const [year2, setYear2] = useState(2020);
   const [chartData, setChartData] = useState(null);
   const [importsMode, setImportsMode] = useState(false);
-  const [countryMode, setCountryMode] = useState(true);
+  const [countryMode, setCountryMode] = useState(false);
   const [showError, setShowError] = useState(false);
   const API_KEY = '562a82ab18f844f78e5591084963c499';
 
@@ -29,6 +30,8 @@ const InfoPage = React.memo((props) => {
     else {
       setYear2(newYear);
     }
+
+    setSendReq(true);
   }
 
   const codes = {
@@ -188,7 +191,7 @@ const InfoPage = React.memo((props) => {
       setShowLoading(true);  
       const timer = setTimeout(() => {
         setSelectionChange(true);
-        setShowLoading(false);
+        setSendReq(true);
       }, 800);
       return () => clearTimeout(timer);
     }
@@ -226,28 +229,35 @@ const InfoPage = React.memo((props) => {
     try {
       const data1 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=S2&ps=${year1}&r=${codes[props.countryOne]}&p=${countryMode ? 'ALL' : '0'}&rg=${importsMode ? '1' : '2'}&cc=${countryMode ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`).then((res) => res.json());
       const data2 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=S2&ps=${year2}&r=${codes[props.countryTwo]}&p=${countryMode ? 'ALL' : '0'}&rg=${importsMode ? '1' : '2'}&cc=${countryMode ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`).then((res) => res.json());
+      setShowLoading(false);
+      setShowError(false);
+      setSendReq(false);
       setChartData(data1, data2);
       console.log(data1, data2);
-
     } catch (error) {
-      console.error(error);
-      setShowError(true);
+      if (isOnline) {
+        fetchExportData();
+      }
+
+      else {
+        setShowError(true);
+      }
     }
   };
 
-  const debouncedFetchData = debounce(fetchExportData, 2000);
+  const debouncedFetchData = debounce(fetchExportData, 1000);
 
   useEffect(() => {
-      if (data && data.length > 0 && selectionChange) {
+      if (data && data.length > 0 && selectionChange && sendReq) {
         debouncedFetchData();
       }
-  }, [year1, year2, selectionChange, data, props.countryOne, props.countryTwo]);
+  }, [year1, year2, importsMode, countryMode, selectionChange, sendReq, data, props.countryOne, props.countryTwo]);
 
   return (
     <div className={`${styles.canvas} ${props.darkMode ? styles.dark : ''}`}>
       <Navbar handleChange={props.handleChange} handleSelection={props.handleSelection} darkMode={props.darkMode} countryOne={props.countryOne} countryTwo={props.countryTwo}></Navbar>
-      <Section chartData={chartData && chartData.length > 0 ? chartData[0] : ''} year={year1} setNewYear={setNewYear} countryNum={0} country={props.countryOne} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
-      <Section chartData={chartData && chartData.length > 0 ? chartData[1] : ''} year={year2} setNewYear={setNewYear} countryNum={1} country={props.countryTwo} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
+      <Section showError={showError} chartData={chartData} year={year1} setNewYear={setNewYear} countryNum={0} country={props.countryOne} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
+      <Section showError={showError} chartData={chartData} year={year2} setNewYear={setNewYear} countryNum={1} country={props.countryTwo} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
       <div className={styles.mainSection}>
       
       </div>

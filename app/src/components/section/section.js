@@ -10,6 +10,8 @@ import { Banner } from '../banner/banner'
 import { PieChart } from '../pie-chart/pie-chart'
 
 export const Section = React.memo((props) => {
+    //const comCodes = [0,1,3,4,5,7,8,20,21,22,23,24,25,26,27,28,29,60,61,62,63,64,65,66,67,69];
+
     function handleYearChange(newYear) {
         const element = document.querySelectorAll('#pointer')[props.countryNum];
         let point = 5 * (newYear - 2002) + 1.3;
@@ -178,6 +180,7 @@ export const Section = React.memo((props) => {
                 2020
             </div>
         </div>
+        <PieChart darkMode={props.darkMode} showLoading={props.showLoading} chartData={props.chartData} showError={props.showError}></PieChart>
     </div>
   )
 })
