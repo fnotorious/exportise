@@ -8,7 +8,7 @@ import LoadingAnimation from '../loading-animation/loading-animation'
 export const PieChart = React.memo((props) => {
   return (
     <div className={styles.canvas}>
-        {props.showLoading != true ? (
+        {props.showLoading !== true ? (
         /*<HighchartsReact
             highcharts={Highcharts}
             options={{

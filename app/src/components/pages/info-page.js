@@ -18,7 +18,9 @@ const InfoPage = React.memo((props) => {
   const [year2, setYear2] = useState(2020);
   const [chartData, setChartData] = useState(null);
   const [importsMode, setImportsMode] = useState(false);
+  const [importsMode2, setImportsMode2] = useState(false);
   const [countryMode, setCountryMode] = useState(false);
+  const [countryMode2, setCountryMode2] = useState(false);
   const [showError, setShowError] = useState(false);
   const API_KEY = '562a82ab18f844f78e5591084963c499';
 
@@ -228,7 +230,7 @@ const InfoPage = React.memo((props) => {
   const fetchExportData = async () => {
     try {
       const data1 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=S2&ps=${year1}&r=${codes[props.countryOne]}&p=${countryMode ? 'ALL' : '0'}&rg=${importsMode ? '1' : '2'}&cc=${countryMode ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`).then((res) => res.json());
-      const data2 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=S2&ps=${year2}&r=${codes[props.countryTwo]}&p=${countryMode ? 'ALL' : '0'}&rg=${importsMode ? '1' : '2'}&cc=${countryMode ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`).then((res) => res.json());
+      const data2 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=S2&ps=${year2}&r=${codes[props.countryTwo]}&p=${countryMode2 ? 'ALL' : '0'}&rg=${importsMode2 ? '1' : '2'}&cc=${countryMode2 ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`).then((res) => res.json());
       setShowLoading(false);
       setShowError(false);
       setSendReq(false);
@@ -255,9 +257,12 @@ const InfoPage = React.memo((props) => {
 
   return (
     <div className={`${styles.canvas} ${props.darkMode ? styles.dark : ''}`}>
+      <div className={styles.navBarPlacer}></div>
       <Navbar handleChange={props.handleChange} handleSelection={props.handleSelection} darkMode={props.darkMode} countryOne={props.countryOne} countryTwo={props.countryTwo}></Navbar>
-      <Section showError={showError} chartData={chartData} year={year1} setNewYear={setNewYear} countryNum={0} country={props.countryOne} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
-      <Section showError={showError} chartData={chartData} year={year2} setNewYear={setNewYear} countryNum={1} country={props.countryTwo} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
+      <div className={styles.sections}>
+        <Section showError={showError} chartData={chartData} year={year1} setNewYear={setNewYear} countryNum={0} country={props.countryOne} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
+        <Section showError={showError} chartData={chartData} year={year2} setNewYear={setNewYear} countryNum={1} country={props.countryTwo} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
+      </div>
       <div className={styles.mainSection}>
       
       </div>

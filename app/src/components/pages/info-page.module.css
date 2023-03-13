@@ -17,6 +17,24 @@
     width: 100%;
     background-color: rgb(255, 255, 255);
     display: flex;
+    flex-direction: column;
+}
+
+.navBarPlacer {
+    top: 0;
+    position: relative;
+    width: 100%;
+    height: 5.2em;
+    background-color: transparent;
+}
+
+.sections {
+    position: relative;
+    height: calc(100vh - 5.2em);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .mainSection {
