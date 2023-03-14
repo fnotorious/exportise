@@ -13,7 +13,9 @@ export const Banner = React.memo((props) => {
                     {props.dataLoaded === false || props.isOnline === false ? <div className={styles.nameLoader}></div> : <p className={styles.name}>{props.data[props.countryNum].name.common}</p>}
                 </div>
                 <div className={styles.nativeNameDisplay}>
-                    {props.dataLoaded === false || props.isOnline === false ? <div className={styles.nativeNameLoader}></div> : <p className={styles.nativeName}>{props.country === 'il' ? props.data[props.countryNum].name.nativeName[Object.keys(props.data[props.countryNum].name.nativeName)[1]].common : props.data[props.countryNum].name.nativeName[Object.keys(props.data[props.countryNum].name.nativeName)[0]].common}</p>}
+                    {props.dataLoaded === false || props.isOnline === false ? <div className={styles.nativeNameLoader}></div> : <p className={styles.nativeName}>{props.country === 'il'
+                    ? props.data[props.countryNum].name.nativeName[Object.keys(props.data[props.countryNum].name.nativeName)[1]].common
+                    : props.data[props.countryNum].name.nativeName[Object.keys(props.data[props.countryNum].name.nativeName)[0]].common}</p>}
                 </div>
         </div>
     </div>

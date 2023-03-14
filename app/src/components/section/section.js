@@ -9,8 +9,37 @@ import { Star } from '../../assets/Star'
 import { Banner } from '../banner/banner'
 import { PieChart } from '../pie-chart/pie-chart'
 
+const getData = (props, comCodes) => {
+    let totalTradeValue = 0;
+    
+    if (props.chartData && props.chartData.length > 0 && props.countryMode === false) {
+        const filteredData = props.chartData[props.countryNum].dataset.filter((item) => {
+            return comCodes.includes(item.cmdCode);
+        });
+
+        filteredData.forEach(item => {
+            totalTradeValue += parseInt(item.TradeValue);
+        });
+
+        return totalTradeValue;
+    }
+}
+
 export const Section = React.memo((props) => {
-    //const comCodes = [0,1,3,4,5,7,8,20,21,22,23,24,25,26,27,28,29,60,61,62,63,64,65,66,67,69];
+    const [wantedData, setWantedData] = useState(null);
+
+    useEffect(() => {
+        const textiles = getData(props, ["26","65","84"]);
+        const oresAndMetals = getData(props, ["27","28","68"]);
+        const manufactures = getData(props, ["5","60","61","62","63","64","65","66","67","69","7","8"]);
+        const machinery = getData(props, ["7"]);
+        const fuel = getData(props, ["3"]);
+        const food = getData(props, ["0","1","22","4"]);
+        const chemical = getData(props, ["0","1","22","4"]);
+        const agriRawMaterials = getData(props, ["20","21","23","24","25","26","29"]);
+
+        setWantedData([textiles, oresAndMetals, manufactures, machinery, fuel, food, chemical, agriRawMaterials]);
+    }, [props, getData])
 
     function handleYearChange(newYear) {
         const element = document.querySelectorAll('#pointer')[props.countryNum];
@@ -180,7 +209,7 @@ export const Section = React.memo((props) => {
                 2020
             </div>
         </div>
-        <PieChart darkMode={props.darkMode} showLoading={props.showLoading} chartData={props.chartData} showError={props.showError}></PieChart>
+        <PieChart data={wantedData} darkMode={props.darkMode} showLoading={props.chartLoading} showError={props.showError}></PieChart>
     </div>
   )
 })
