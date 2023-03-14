@@ -11,7 +11,7 @@ export const PieChart = React.memo((props) => {
   const chartRef = useRef(null);
 
   useEffect(() => {
-    if (prevData != props.data) {
+    if (prevData !== props.data) {
       const chart = chartRef.current.chart;
       setPrevData(props.data);
       chart.series[0].setData(props.data);
@@ -28,6 +28,9 @@ export const PieChart = React.memo((props) => {
 
       else {
         const options = {
+          credits: {
+            enabled: false
+          },
           chart: {
             type: 'pie',
             backgroundColor: 'transparent',
@@ -44,33 +47,37 @@ export const PieChart = React.memo((props) => {
           plotOptions: {
             pie: {
               allowPointSelect: true,
-              size: '100%',
+              size: '115%',
               cursor: 'pointer',
               depth: 35,
               dataLabels: {
                 enabled: true,
                 format: '{point.name}: {point.percentage:.2f}%'
-              }
+              },
+              brightness: props.darkMode ? 0.8 : 1.0,
+              saturation: props.darkMode ? 0.8 : 1.0,
             }
           },
           series: [{
             type: 'pie',
-            name: 'Commodity Trade by Value',
+            name: 'Commodity Trade by Value ($USD)',
             data: [
-              ['Textiles', "$" + props.data[0]],
-              ['Ores and Minerals', "$" + props.data[1]],
-              ['Manufactures', "$" + props.data[2]],
-              ['Machinery', "$" + props.data[3]],
-              ['Fuel', "$" + props.data[4]],
-              ['Food', "$" + props.data[5]],
-              ['Chemicals', "$" + props.data[6]],
-              ['Agricultural Raw Materials', "$" + props.data[7]],
+              ['Textiles', props.data[0]],
+              ['Ores and Minerals', props.data[1]],
+              ['Manufactures', props.data[2]],
+              ['Machinery', props.data[3]],
+              ['Fuel', props.data[4]],
+              ['Food', props.data[5]],
+              ['Chemicals', props.data[6]],
+              ['Agricultural Raw Materials', props.data[7]],
             ],
             dataLabels: {
-              color: props.darkMode ? 'white' : 'black',
+              color: props.darkMode ? '#344493' : '#A8A8A8',
               style: {
-                fontWeight: 'normal'
-              }
+                fontWeight: 'normal',
+                textOutline: 'none',
+                textShadow: 'none'
+              },
             }
           }]
         };
@@ -81,12 +88,30 @@ export const PieChart = React.memo((props) => {
   }
 
   return (
-    <div className={styles.canvas}>
-        {props.showLoading !== true ? renderChart() :
-        <div className={styles.loading}>
-          <LoadingAnimation darkMode={props.darkMode}></LoadingAnimation>
-        </div>
+    <div className={`${styles.canvas} ${props.darkMode ? styles.dark : ''}`}>
+      <div className={styles.buttonDisplay}>
+        <button className={styles.button} onClick={() => props.setByImports(props.countryNum)}>
+          {props.importsMode ? 'By exports' : 'By imports'}
+        </button>
+        <button className={styles.button}>
+          {props.countryMode ? 'By product' : 'By country'}
+        </button>
+      </div>
+      <div className={styles.chartTitle}>
+        <span style={{fontWeight: "1000"}}>
+          {props.importsMode ? 'Import Makeup ' : 'Export Makeup '}
+        </span>
+        <span style={{fontWeight: "200"}}>
+          {props.year}
+        </span>
+      </div>
+      <div className={styles.pieChart}>
+        {props.showLoading !== true ? renderChart() : 
+          <div className={styles.loading}>
+            <LoadingAnimation darkMode={props.darkMode}></LoadingAnimation>
+          </div>
         }
+      </div>
     </div>
   )
 })

@@ -160,7 +160,7 @@
 .currency {
     position: relative;
     display: flex;
-    width: 14em;
+    width: 18em;
     height: 2.8em;
     font-size: 1.4em;
     animation: fade 1s ease-in-out;
@@ -184,7 +184,7 @@
     position: relative;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 16.5em;
+    margin-top: 15em;
     height: 1.4em;
     width: 35em;
     border-radius: 5px;

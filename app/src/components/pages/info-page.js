@@ -8,6 +8,7 @@ import { Navbar } from '../navbar/navbar'
 const InfoPage = React.memo((props) => {
   const [showLoading, setShowLoading] = useState(false);
   const [chartLoading, setChartLoading] = useState(false);
+  const [chartLoading2, setChartLoading2] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [prevSelection, setPrevSelection] = useState([props.countryOne, props.countryTwo]);
   const [selectionChange, setSelectionChange] = useState(true);
@@ -37,30 +38,32 @@ const InfoPage = React.memo((props) => {
     setSendReq(true);
   }
 
-  const setByCountry = (value, countryNum) => {
+  const setByCountry = (countryNum) => {
     if (countryNum === 0) {
-      setCountryMode(value);
+      setCountryMode((prevValue) => !prevValue);
+      setChartLoading(true);
     }
 
     else {
-      setCountryMode2(value);
+      setCountryMode2((prevValue) => !prevValue);
+      setChartLoading2(true);
     }
 
     setSendReq(true);
-    setChartLoading(true);
   }
 
-  const setByImports = (value, countryNum) => {
+  const setByImports = (countryNum) => {
     if (countryNum === 0) {
-      setImportsMode(value);
+      setImportsMode((prevValue) => !prevValue);
+      setChartLoading(true);
     }
 
     else {
-      setImportsMode2(value);
+      setImportsMode2((prevValue) => !prevValue);
+      setChartLoading2(true);
     }
 
     setSendReq(true);
-    setChartLoading(true);
   }
 
   const codes = {
@@ -219,6 +222,7 @@ const InfoPage = React.memo((props) => {
     if (selectionChange === false) {
       setShowLoading(true);  
       setChartLoading(true);
+      setChartLoading2(true);
       const timer = setTimeout(() => {
         setSelectionChange(true);
         setSendReq(true);
@@ -261,6 +265,7 @@ const InfoPage = React.memo((props) => {
       const data1 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=S2&ps=${year1}&r=${codes[props.countryOne]}&p=${countryMode ? 'ALL' : '0'}&rg=${importsMode ? '1' : '2'}&cc=${countryMode ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`).then((res) => res.json());
       const data2 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=S2&ps=${year2}&r=${codes[props.countryTwo]}&p=${countryMode2 ? 'ALL' : '0'}&rg=${importsMode2 ? '1' : '2'}&cc=${countryMode2 ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`).then((res) => res.json());
       setChartLoading(false);
+      setChartLoading2(false);
       setShowError(false);
       setSendReq(false);
 
@@ -292,7 +297,7 @@ const InfoPage = React.memo((props) => {
         <Section chartLoading={chartLoading} setByImports={setByImports} setByCountry={setByCountry} importsMode={importsMode} countryMode={countryMode} showError={showError} chartData={chartData} year={year1} setNewYear={setNewYear} countryNum={0} 
                   country={props.countryOne} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
 
-        <Section chartLoading={chartLoading} setByImports={setByImports} setByCountry={setByCountry} importsMode={importsMode} countryMode={countryMode2} showError={showError} chartData={chartData} year={year2} setNewYear={setNewYear} countryNum={1} 
+        <Section chartLoading={chartLoading2} setByImports={setByImports} setByCountry={setByCountry} importsMode={importsMode2} countryMode={countryMode2} showError={showError} chartData={chartData} year={year2} setNewYear={setNewYear} countryNum={1} 
                   country={props.countryTwo} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
       </div>
       <div className={styles.mainSection}>

@@ -29,16 +29,22 @@ export const Section = React.memo((props) => {
     const [wantedData, setWantedData] = useState(null);
 
     useEffect(() => {
-        const textiles = getData(props, ["26","65","84"]);
-        const oresAndMetals = getData(props, ["27","28","68"]);
-        const manufactures = getData(props, ["5","60","61","62","63","64","65","66","67","69","7","8"]);
-        const machinery = getData(props, ["7"]);
-        const fuel = getData(props, ["3"]);
-        const food = getData(props, ["0","1","22","4"]);
-        const chemical = getData(props, ["0","1","22","4"]);
-        const agriRawMaterials = getData(props, ["20","21","23","24","25","26","29"]);
+        if (props.countryMode) {
 
-        setWantedData([textiles, oresAndMetals, manufactures, machinery, fuel, food, chemical, agriRawMaterials]);
+        }
+
+        else {
+            const textiles = getData(props, ["26","65","84"]);
+            const oresAndMetals = getData(props, ["27","28","68"]);
+            const manufactures = getData(props, ["5","60","61","62","63","64","65","66","67","69","7","8"]);
+            const machinery = getData(props, ["7"]);
+            const fuel = getData(props, ["3"]);
+            const food = getData(props, ["0","1","22","4"]);
+            const chemical = getData(props, ["0","1","22","4"]);
+            const agriRawMaterials = getData(props, ["20","21","23","24","25","26","29"]);
+
+            setWantedData([textiles, oresAndMetals, manufactures, machinery, fuel, food, chemical, agriRawMaterials]);
+        }
     }, [props, getData])
 
     function handleYearChange(newYear) {
@@ -98,8 +104,8 @@ export const Section = React.memo((props) => {
                         <div>
                           <span style={{fontWeight: "1000"}}>Currency: </span>
                           <span style={{fontWeight: "200"}}>
-                            {props.data[props.countryNum].currencies[Object.keys(props.data[props.countryNum].currencies)[0]].name.length > 30
-                            ? props.data[props.countryNum].currencies[Object.keys(props.data[props.countryNum].currencies)[0]].name.slice(0, 30).concat("...")
+                            {props.data[props.countryNum].currencies[Object.keys(props.data[props.countryNum].currencies)[0]].name.length > 20
+                            ? props.data[props.countryNum].currencies[Object.keys(props.data[props.countryNum].currencies)[0]].name.slice(0, 20).concat("...")
                             : props.data[props.countryNum].currencies[Object.keys(props.data[props.countryNum].currencies)[0]].name}
                           </span>
                         </div>
@@ -209,7 +215,7 @@ export const Section = React.memo((props) => {
                 2020
             </div>
         </div>
-        <PieChart data={wantedData} darkMode={props.darkMode} showLoading={props.chartLoading} showError={props.showError}></PieChart>
+        <PieChart year={props.year} countryNum={props.countryNum} setByImports={props.setByImports} setByCountry={props.setByCountry} importsMode={props.importsMode} countryMode={props.countryMode} data={wantedData} darkMode={props.darkMode} showLoading={props.chartLoading} showError={props.showError}></PieChart>
     </div>
   )
 })

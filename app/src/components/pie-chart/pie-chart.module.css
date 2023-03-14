@@ -1,10 +1,93 @@
+.dark {
+    background-color: #080e29 !important;
+}
+
 .canvas {
     position: relative;
-    margin: auto;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 425px;
+    height: 410px;
     justify-content: center;
+}
+
+.buttonDisplay {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    row-gap: 1em;
+    width: 100%;
+    justify-content: center;
+}
+
+.button {
+    background-color: #ffffff;
+    height: 2.5em;
+    width: 7em;
+    color: #a8a8a8;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    border: 0.1em solid #a8a8a8;
+    border-radius: 0.5em;
+    transition: all 0.5s;
+    position: relative;
+    font-weight: 400;
+    font-size: .9em;
+    outline: none;
+}
+
+.dark .button {
+    background-color: #080e29 !important;
+    color: #344493 !important;
+    border: 0.1em solid #344493 !important;
+}
+
+.button:first-child {
+    margin-right: 1.2em;
+}
+
+.button:hover {
+    background-color: #dedede;
+}
+
+.dark .button:hover {
+    background-color: #131e4e !important;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    outline: none;
+}
+
+.chartTitle {
+    height: 1em;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 0.5em;
+    color: #a8a8a8;
+}
+
+.dark .chartTitle {
+    color: #344493 !important;
+}
+
+.pieChart {
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    top: .5em;
+    height: 350px;
+    justify-content: center;
+    display: flex;
+    overflow: hidden;
 }
 
 .loading {
