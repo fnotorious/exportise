@@ -40,7 +40,8 @@ export const PieChart = React.memo((props) => {
               beta: 0
             }
           },
-          colors: ['#B23D6D', '#7DDAA1', '#F5CF23', '#CCA570', '#BA8677', '#D86565', '#C270D8', '#8C7CD6', '#6A98D8', '#6AD8D8', '#2C6582'],
+          colors: ['#BA8677', '#7DDAA1', '#8C7CD6', '#CCA570', '#B23D6D', '#6AD8D8', '#D81159',
+                   '#F5CF23', '#6A98D8', '#D86565', '#2C6582', '#FC6D26', '#04AA6B', '#C678E7', '#34A1C7'],
           title: {
             text: null
           },
@@ -54,22 +55,27 @@ export const PieChart = React.memo((props) => {
                 enabled: true,
                 format: '{point.name}: {point.percentage:.2f}%'
               },
-              brightness: props.darkMode ? 0.8 : 1.0,
-              saturation: props.darkMode ? 0.8 : 1.0,
             }
           },
           series: [{
             type: 'pie',
-            name: 'Commodity Trade by Value ($USD)',
+            name: 'Commodity Trade by Value: ($USD)',
             data: [
-              ['Textiles', props.data[0]],
-              ['Ores and Minerals', props.data[1]],
-              ['Manufactures', props.data[2]],
-              ['Machinery', props.data[3]],
-              ['Fuel', props.data[4]],
-              ['Food', props.data[5]],
-              ['Chemicals', props.data[6]],
-              ['Agricultural Raw Materials', props.data[7]],
+              ['Fuels', props.data[0]],
+              ['Plastic and Rubber', props.data[1]],
+              ['Chemicals', props.data[2]],
+              ['Transportation', props.data[3]],
+              ['Metals', props.data[4]],
+              ['Machinery and Electronics', props.data[5]],
+              ['Stone and Glass', props.data[6]],
+              ['Food', props.data[7]],
+              ['Animals', props.data[8]],
+              ['Wood', props.data[9]],
+              ['Miscellaneous', props.data[10]],
+              ['Minerals', props.data[11]],
+              ['Vegetables', props.data[12]],
+              ['Textiles', props.data[13]],
+              ['Hides and Skins', props.data[14]],
             ],
             dataLabels: {
               color: props.darkMode ? '#344493' : '#A8A8A8',

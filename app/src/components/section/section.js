@@ -40,16 +40,25 @@ export const Section = React.memo((props) => {
         }
 
         else {
-            const textiles = getData(props, ["26","65","84"]);
-            const oresAndMetals = getData(props, ["27","28","68"]);
-            const manufactures = getData(props, ["5","60","61","62","63","64","65","66","67","69","7","8"]);
-            const machinery = getData(props, ["7"]);
-            const fuel = getData(props, ["3"]);
-            const food = getData(props, ["0","1","22","4"]);
-            const chemical = getData(props, ["0","1","22","4"]);
-            const agriRawMaterials = getData(props, ["20","21","23","24","25","26","29"]);
+            const fuels = getData(props, ["27"]);
+            const plasticOrRubber = getData(props, ["39","40"]);
+            const chemicals = getData(props, ["28","29","30","31","32","33","34","35","36","37","38"]);
+            const transportation = getData(props, ["86","87","88","89"]);
+            const metals = getData(props, ["72","73","74","75","76","78","79","80","81","82","83"]);
+            const macAndElec = getData(props, ["84","85"]);
+            const stoneAndGlass = getData(props, ["68","69","70","71"]);
+            const food = getData(props, ["16","17","18","19","20","21","22","23","24"]);
+            const animals = getData(props, ["01","02","03","04","05"]);
+            const wood = getData(props, ["44","45","46","47","48","49"]);
+            const miscellaneous = getData(props, ["90","91","92","93","94","95","96","97","98","99"]);
+            const minerals = getData(props, ["25","26"]);
+            const vegetables = getData(props, ["06","07","08","09","10","11","12","13","14","15"]);
+            const textiles = getData(props, ["50","51","52","53","54","55","56","57","58","59","60","61","62","63"]);
+            const hidesAndSkins = getData(props, ["41","42","43"])
 
-            setWantedData([textiles, oresAndMetals, manufactures, machinery, fuel, food, chemical, agriRawMaterials]);
+
+            setWantedData([fuels, plasticOrRubber, chemicals, transportation, metals, macAndElec, stoneAndGlass, food
+                            , animals, wood, miscellaneous, minerals, vegetables, textiles, hidesAndSkins]);
         }
     }, [props, getData])
 
