@@ -12,16 +12,22 @@ import { PieChart } from '../pie-chart/pie-chart'
 const getData = (props, comCodes) => {
     let totalTradeValue = 0;
     
-    if (props.chartData && props.chartData.length > 0 && props.countryMode === false) {
-        const filteredData = props.chartData[props.countryNum].dataset.filter((item) => {
-            return comCodes.includes(item.cmdCode);
-        });
+    if (props.chartData && props.chartData.length > 0 && props.showError === false) {
+        if (props.countryMode) {
 
-        filteredData.forEach(item => {
-            totalTradeValue += parseInt(item.TradeValue);
-        });
+        }
 
-        return totalTradeValue;
+        else {
+            const filteredData = props.chartData[props.countryNum].dataset.filter((item) => {
+                return comCodes.includes(item.cmdCode);
+            });
+    
+            filteredData.forEach(item => {
+                totalTradeValue += parseInt(item.TradeValue);
+            });
+    
+            return totalTradeValue;
+        }
     }
 }
 
@@ -47,7 +53,7 @@ export const Section = React.memo((props) => {
         }
     }, [props, getData])
 
-    function handleYearChange(newYear) {
+    const handleYearChange = (newYear) => {
         const element = document.querySelectorAll('#pointer')[props.countryNum];
         let point = 5 * (newYear - 2002) + 1.3;
 
@@ -61,7 +67,7 @@ export const Section = React.memo((props) => {
 
     useEffect(() => {
         if (props.selectionChange) {
-            handleYearChange(2020);
+            handleYearChange(props.year);
         }
     }, [props.selectionChange])
 

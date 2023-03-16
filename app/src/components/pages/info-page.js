@@ -6,6 +6,7 @@ import { Section } from '../section/section'
 import { Navbar } from '../navbar/navbar'
 
 const InfoPage = React.memo((props) => {
+  const [controller, setController] = useState(new AbortController());
   const [showLoading, setShowLoading] = useState(false);
   const [chartLoading, setChartLoading] = useState(false);
   const [chartLoading2, setChartLoading2] = useState(false);
@@ -223,9 +224,11 @@ const InfoPage = React.memo((props) => {
       setShowLoading(true);  
       setChartLoading(true);
       setChartLoading2(true);
+      setSendReq(true);
+      setYear1(2020);
+      setYear2(2020);
       const timer = setTimeout(() => {
         setSelectionChange(true);
-        setSendReq(true);
       }, 800);
       return () => clearTimeout(timer);
     }
@@ -242,15 +245,19 @@ const InfoPage = React.memo((props) => {
   }, []);
 
   const fetchCountries = async () => {
+    controller.abort(); 
+    const newController = new AbortController();
+    setController(newController); 
+    
     try {
-      const country1 = await fetch(`https://restcountries.com/v3.1/alpha/${props.countryOne}`).then((res) => res.json());
-      const country2 = await fetch(`https://restcountries.com/v3.1/alpha/${props.countryTwo}`).then((res) => res.json());
+      const country1 = await fetch(`https://restcountries.com/v3.1/alpha/${props.countryOne}`, { signal: newController.signal }).then((res) => res.json());
+      const country2 = await fetch(`https://restcountries.com/v3.1/alpha/${props.countryTwo}`, { signal: newController.signal }).then((res) => res.json());
       setDataLoaded(true);
       setShowLoading(false);
       setData([country1[0], country2[0]])
 
     } catch (error) {
-      
+      setDataLoaded(false);
     }
   };
 
@@ -261,33 +268,56 @@ const InfoPage = React.memo((props) => {
   }, [props.countryOne, props.countryTwo]);
 
   const fetchExportData = async () => {
-    try {
-      const data1 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=S2&ps=${year1}&r=${codes[props.countryOne]}&p=${countryMode ? 'ALL' : '0'}&rg=${importsMode ? '1' : '2'}&cc=${countryMode ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`).then((res) => res.json());
-      const data2 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=S2&ps=${year2}&r=${codes[props.countryTwo]}&p=${countryMode2 ? 'ALL' : '0'}&rg=${importsMode2 ? '1' : '2'}&cc=${countryMode2 ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`).then((res) => res.json());
-      setChartLoading(false);
-      setChartLoading2(false);
-      setShowError(false);
-      setSendReq(false);
+    controller.abort(); 
+    const newController = new AbortController();
+    setController(newController); 
+    
+    const data1 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=S2&ps=${year1}&r=${codes[props.countryOne]}&p=${countryMode ? 'ALL' : '0'}&rg=${importsMode ? '1' : '2'}&cc=${countryMode ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`
+    , { signal: newController.signal })
+      .then(res => {
+        if (!res.ok) {
+          if (res.status === '500') {
+            setShowError(true);
+          }
 
-      setChartData([data1, data2]);
-    } catch (error) {
-      if (isOnline) {
-        fetchExportData();
-      }
+          else {
+            fetchExportData();
+          }
+        }
 
-      else if (isOnline === false || selectionChange || sendReq === true) {
-        setShowError(true);
-      }
-    }
+        return res.json();
+      })
+
+    const data2 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=S2&ps=${year2}&r=${codes[props.countryTwo]}&p=${countryMode2 ? 'ALL' : '0'}&rg=${importsMode2 ? '1' : '2'}&cc=${countryMode2 ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`
+    , { signal: newController.signal })
+      .then(res => {
+        if (!res.ok) {
+          if (res.status === '500') {
+            setShowError(true);
+          }
+
+          else {
+            fetchExportData();
+          }
+        }
+
+        return res.json();
+      })
+
+    setChartLoading(false);
+    setChartLoading2(false);
+    setSendReq(false);
+
+    setChartData([data1, data2]);
   };
 
   const debouncedFetchData = debounce(fetchExportData, 1000);
 
   useEffect(() => {
-      if (data && data.length > 0 && selectionChange && sendReq) {
+      if (sendReq) {
         debouncedFetchData();
       }
-  }, [year1, year2, importsMode, countryMode, selectionChange, sendReq, data, props.countryOne, props.countryTwo]);
+  }, [sendReq]);
 
   return (
     <div className={`${styles.canvas} ${props.darkMode ? styles.dark : ''}`}>

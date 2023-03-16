@@ -49,25 +49,27 @@ export const Recent = React.memo((props) => {
     const renderFlags = (paramOne, paramTwo, flag) => {
         return (
         <div className={styles.option} onClick={() => props.handleSelection(paramOne, paramTwo)}>
-            <div className={styles.optionContent}>
-                <div className={styles.countryText}>
+            {paramOne && paramTwo && (
+                <div className={styles.optionContent}>
+                    <div className={styles.countryText}>
                     {paramOne.toUpperCase()}
+                    </div>
+                    <div className={styles.flagPlacement}>
+                        {isOnline === false ? <img src={NoSymbol} alt="NO"></img> : 
+                            showLoading && flag === 1 ? <div className={styles.loader}></div> :
+                                <Flag country={paramOne.toUpperCase()} size={40} className={`${flag === 1 ? `${arrayHasChanged ? styles.fadeIn : ''}` : ''} ${styles.flags}`} />}
+                    </div>
+                    <div className={styles.flagPlacement}>
+                        {isOnline === false ? <img src={NoSymbol} alt="NO"></img> :
+                            showLoading && flag === 1 ? <div className={styles.loader}></div> :
+                                <Flag country={paramTwo.toUpperCase()} size={40} className={`${flag === 1 ? `${arrayHasChanged ? styles.fadeIn : ''}` : ''} ${styles.flags}`} />}
+                    </div>
+                    <div className={styles.countryText}>
+                        {paramTwo.toUpperCase()}
+                    </div>
                 </div>
-                <div className={styles.flagPlacement}>
-                    {isOnline === false ? <img src={NoSymbol} alt="NO"></img> : 
-                        showLoading && flag === 1 ? <div className={styles.loader}></div> :
-                            <Flag country={paramOne.toUpperCase()} size={40} className={`${flag === 1 ? `${arrayHasChanged ? styles.fadeIn : ''}` : ''} ${styles.flags}`} />}
-                </div>
-                <div className={styles.flagPlacement}>
-                    {isOnline === false ? <img src={NoSymbol} alt="NO"></img> :
-                        showLoading && flag === 1 ? <div className={styles.loader}></div> :
-                            <Flag country={paramTwo.toUpperCase()} size={40} className={`${flag === 1 ? `${arrayHasChanged ? styles.fadeIn : ''}` : ''} ${styles.flags}`} />}
-                </div>
-                <div className={styles.countryText}>
-                    {paramTwo.toUpperCase()}
-                </div>
+            )}
             </div>
-        </div>
         );
     }
 
