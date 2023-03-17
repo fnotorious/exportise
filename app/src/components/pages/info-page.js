@@ -6,25 +6,29 @@ import { Section } from '../section/section'
 import { Navbar } from '../navbar/navbar'
 
 const InfoPage = React.memo((props) => {
-  const [controller, setController] = useState(new AbortController());
   const [showLoading, setShowLoading] = useState(false);
   const [chartLoading, setChartLoading] = useState(false);
   const [chartLoading2, setChartLoading2] = useState(false);
+  const [chartData, setChartData] = useState(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [prevSelection, setPrevSelection] = useState([props.countryOne, props.countryTwo]);
   const [selectionChange, setSelectionChange] = useState(true);
+   const [showError, setShowError] = useState(false);
+
   const [sendReq, setSendReq] = useState(true);
   const [firstRun, setFirstRun] = useState(true);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [data, setData] = useState(null);
+
   const [year1, setYear1] = useState(2020);
   const [year2, setYear2] = useState(2020);
-  const [chartData, setChartData] = useState(null);
+
   const [importsMode, setImportsMode] = useState(false);
   const [importsMode2, setImportsMode2] = useState(false);
+
   const [countryMode, setCountryMode] = useState(false);
   const [countryMode2, setCountryMode2] = useState(false);
-  const [showError, setShowError] = useState(false);
+
   const API_KEY = '562a82ab18f844f78e5591084963c499';
 
   const setNewYear = (newYear, countryNum) => {
@@ -214,7 +218,6 @@ const InfoPage = React.memo((props) => {
     if (firstRun || (prevSelection[0] !== props.countryOne || prevSelection[1] !== props.countryTwo)) {
       setSelectionChange(false);
       setPrevSelection([props.countryOne, props.countryTwo]);
-      setFirstRun(false);
       setDataLoaded(false);
     }
   }, [prevSelection, props.countryOne, props.countryTwo, firstRun]);
@@ -245,13 +248,9 @@ const InfoPage = React.memo((props) => {
   }, []);
 
   const fetchCountries = async () => {
-    controller.abort(); 
-    const newController = new AbortController();
-    setController(newController); 
-    
     try {
-      const country1 = await fetch(`https://restcountries.com/v3.1/alpha/${props.countryOne}`, { signal: newController.signal }).then((res) => res.json());
-      const country2 = await fetch(`https://restcountries.com/v3.1/alpha/${props.countryTwo}`, { signal: newController.signal }).then((res) => res.json());
+      const country1 = await fetch(`https://restcountries.com/v3.1/alpha/${props.countryOne}`).then((res) => res.json());
+      const country2 = await fetch(`https://restcountries.com/v3.1/alpha/${props.countryTwo}`).then((res) => res.json());
       setDataLoaded(true);
       setShowLoading(false);
       setData([country1[0], country2[0]])
@@ -261,43 +260,39 @@ const InfoPage = React.memo((props) => {
     }
   };
 
-  const debounceFetchCountries = debounce(fetchCountries, 2000);
+  const debounceFetchCountries = debounce(fetchCountries, 500);
 
   useEffect(() => {
     debounceFetchCountries();
   }, [props.countryOne, props.countryTwo]);
 
-  const fetchExportData = async () => {
-    controller.abort(); 
-    const newController = new AbortController();
-    setController(newController); 
-    
+  const fetchExportData = async (controller) => {
     const data1 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=HS&ps=${year1}&r=${codes[props.countryOne]}&p=${countryMode ? 'ALL' : '0'}&rg=${importsMode ? '1' : '2'}&cc=${countryMode ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`
-    , { signal: newController.signal })
+    , { signal: controller.signal })
       .then(res => {
         if (!res.ok) {
-          if (res.status === '500') {
+          if (res.status === 500) {
             setShowError(true);
           }
 
           else {
-            fetchExportData();
+            fetchExportData(controller);
           }
         }
 
         return res.json();
-      })
+      })  
 
     const data2 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=HS&ps=${year2}&r=${codes[props.countryTwo]}&p=${countryMode2 ? 'ALL' : '0'}&rg=${importsMode2 ? '1' : '2'}&cc=${countryMode2 ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`
-    , { signal: newController.signal })
+    , { signal: controller.signal })
       .then(res => {
         if (!res.ok) {
-          if (res.status === '500') {
+          if (res.status === 500) {
             setShowError(true);
           }
 
           else {
-            fetchExportData();
+            fetchExportData(controller);
           }
         }
 
@@ -311,13 +306,20 @@ const InfoPage = React.memo((props) => {
     setChartData([data1, data2]);
   };
 
-  const debouncedFetchData = debounce(fetchExportData, 1000);
-
   useEffect(() => {
-      if (sendReq) {
-        debouncedFetchData();
-      }
-  }, [sendReq]);
+    const controller = new AbortController();
+    if (sendReq) {
+      fetchExportData(controller);
+    }
+  
+    if (!firstRun && sendReq) {
+      return () => {
+        controller.abort();
+      };
+    } else {
+      setFirstRun(false);
+    }
+  }, [sendReq, props.countryOne, props.countryTwo, importsMode, importsMode2, countryMode, countryMode2, year1, year2]);
 
   return (
     <div className={`${styles.canvas} ${props.darkMode ? styles.dark : ''}`}>
