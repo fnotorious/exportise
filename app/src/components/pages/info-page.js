@@ -13,7 +13,7 @@ const InfoPage = React.memo((props) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [prevSelection, setPrevSelection] = useState([props.countryOne, props.countryTwo]);
   const [selectionChange, setSelectionChange] = useState(true);
-   const [showError, setShowError] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const [sendReq, setSendReq] = useState(true);
   const [firstRun, setFirstRun] = useState(true);
@@ -29,6 +29,7 @@ const InfoPage = React.memo((props) => {
   const [countryMode, setCountryMode] = useState(false);
   const [countryMode2, setCountryMode2] = useState(false);
 
+  const controller = new AbortController();
   const API_KEY = '562a82ab18f844f78e5591084963c499';
 
   const setNewYear = (newYear, countryNum) => {
@@ -44,12 +45,12 @@ const InfoPage = React.memo((props) => {
   }
 
   const setByCountry = (countryNum) => {
-    if (countryNum === 0) {
+    if (countryNum === 0 && !sendReq) {
       setCountryMode((prevValue) => !prevValue);
       setChartLoading(true);
     }
 
-    else {
+    else if (countryNum === 1 && !sendReq) {
       setCountryMode2((prevValue) => !prevValue);
       setChartLoading2(true);
     }
@@ -58,12 +59,12 @@ const InfoPage = React.memo((props) => {
   }
 
   const setByImports = (countryNum) => {
-    if (countryNum === 0) {
+    if (countryNum === 0 && !sendReq) {
       setImportsMode((prevValue) => !prevValue);
       setChartLoading(true);
     }
 
-    else {
+    else if (countryNum === 1 && !sendReq) {
       setImportsMode2((prevValue) => !prevValue);
       setChartLoading2(true);
     }
@@ -306,20 +307,21 @@ const InfoPage = React.memo((props) => {
     setChartData([data1, data2]);
   };
 
+  const debounceExportData = debounce(fetchExportData, 1000);
+
   useEffect(() => {
-    const controller = new AbortController();
     if (sendReq) {
-      fetchExportData(controller);
+      debounceExportData(controller);
     }
   
-    if (!firstRun && sendReq) {
+    if (!firstRun) {
       return () => {
         controller.abort();
       };
     } else {
       setFirstRun(false);
     }
-  }, [sendReq, props.countryOne, props.countryTwo, importsMode, importsMode2, countryMode, countryMode2, year1, year2]);
+  }, [sendReq, controller, props.countryOne, props.countryTwo, importsMode, importsMode2, countryMode, countryMode2, year1, year2]);
 
   return (
     <div className={`${styles.canvas} ${props.darkMode ? styles.dark : ''}`}>
