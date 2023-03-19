@@ -314,7 +314,7 @@ const InfoPage = React.memo((props) => {
       debounceExportData(controller);
     }
   
-    if (!firstRun) {
+    if (!firstRun && sendReq) {
       return () => {
         controller.abort();
       };

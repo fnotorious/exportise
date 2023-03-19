@@ -19,77 +19,71 @@ export const PieChart = React.memo((props) => {
   }, [])
 
   function renderChart() {
-    if (props.data && props.data.length > 1) {
+    if (props.data && props.data.length > 0) {
       Highcharts3D(Highcharts);
-    
-      if (props.countryMode) {
-        // ADD COUNTRYMODE FEATURE
-      }
 
-      else {
-        const options = {
-          credits: {
-            enabled: false
-          },
-          chart: {
-            type: 'pie',
-            backgroundColor: 'transparent',
-            options3d: {
-              enabled: true,
-              alpha: 45,
-              beta: 0
-            }
-          },
-          colors: ['#BA8677', '#7DDAA1', '#8C7CD6', '#CCA570', '#B23D6D', '#6AD8D8', '#D81159',
-                   '#F5CF23', '#6A98D8', '#D86565', '#2C6582', '#FC6D26', '#04AA6B', '#C678E7', '#34A1C7'],
-          title: {
-            text: null
-          },
-          plotOptions: {
-            pie: {
-              allowPointSelect: true,
-              size: '115%',
-              cursor: 'pointer',
-              depth: 35,
-              dataLabels: {
-                enabled: true,
-                format: '{point.name}: {point.percentage:.2f}%'
-              },
-            }
-          },
-          series: [{
-            type: 'pie',
-            name: 'Commodity Trade by Value: ($USD)',
-            data: [
-              ['Fuels', props.data[0]],
-              ['Plastic and Rubber', props.data[1]],
-              ['Chemicals', props.data[2]],
-              ['Transportation', props.data[3]],
-              ['Metals', props.data[4]],
-              ['Machinery and Electronics', props.data[5]],
-              ['Stone and Glass', props.data[6]],
-              ['Food', props.data[7]],
-              ['Animals', props.data[8]],
-              ['Wood', props.data[9]],
-              ['Miscellaneous', props.data[10]],
-              ['Minerals', props.data[11]],
-              ['Vegetables', props.data[12]],
-              ['Textiles', props.data[13]],
-              ['Hides and Skins', props.data[14]],
-            ],
+      const options = {
+        credits: {
+          enabled: false
+        },
+        chart: {
+          type: 'pie',
+          backgroundColor: 'transparent',
+          options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+          }
+        },
+        colors: ['#BA8677', '#7DDAA1', '#8C7CD6', '#CCA570', '#B23D6D', '#6AD8D8', '#D81159',
+                  '#F5CF23', '#6A98D8', '#D86565', '#2C6582', '#FC6D26', '#04AA6B', '#C678E7', '#34A1C7'],
+        title: {
+          text: null
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            size: '115%',
+            cursor: 'pointer',
+            depth: 35,
             dataLabels: {
-              color: props.darkMode ? '#344493' : '#A8A8A8',
-              style: {
-                fontWeight: 'normal',
-                textOutline: 'none',
-                textShadow: 'none'
-              },
-            }
-          }]
-        };
+              enabled: true,
+              format: '{point.name}: {point.percentage:.2f}%'
+            },
+          }
+        },
+        series: [{
+          type: 'pie',
+          name: 'Commodity Trade by Value: ($USD)',
+          data: [
+            [props.countryMode ? props.data[0].ptTitle : 'Fuels', props.countryMode ? props.data[0].TradeValue : props.data[0]],
+            [props.countryMode ? props.data[1].ptTitle : 'Plastic and Rubber', props.countryMode ? props.data[1].TradeValue : props.data[1]],
+            [props.countryMode ? props.data[2].ptTitle : 'Chemicals', props.countryMode ? props.data[2].TradeValue : props.data[2]],
+            [props.countryMode ? props.data[3].ptTitle : 'Transportation', props.countryMode ? props.data[3].TradeValue : props.data[3]],
+            [props.countryMode ? props.data[4].ptTitle : 'Metals', props.countryMode ? props.data[4].TradeValue : props.data[4]],
+            [props.countryMode ? props.data[5].ptTitle : 'Machinery and Electronics', props.countryMode ? props.data[5].TradeValue : props.data[5]],
+            [props.countryMode ? props.data[6].ptTitle : 'Stone and Glass', props.countryMode ? props.data[6].TradeValue : props.data[6]],
+            [props.countryMode ? props.data[7].ptTitle : 'Food', props.countryMode ? props.data[7].TradeValue : props.data[7]],
+            [props.countryMode ? props.data[8].ptTitle : 'Animals', props.countryMode ? props.data[8].TradeValue : props.data[8]],
+            [props.countryMode ? props.data[9].ptTitle : 'Wood', props.countryMode ? props.data[9].TradeValue : props.data[9]],
+            [props.countryMode ? props.data[10].ptTitle : 'Miscellaneous', props.countryMode ? props.data[10].TradeValue : props.data[10]],
+            [props.countryMode ? props.data[11].ptTitle : 'Minerals', props.countryMode ? props.data[11].TradeValue : props.data[11]],
+            [props.countryMode ? props.data[12].ptTitle : 'Vegetables', props.countryMode ? props.data[12].TradeValue : props.data[12]],
+            [props.countryMode ? props.data[13].ptTitle : 'Textiles', props.countryMode ? props.data[13].TradeValue : props.data[13]],
+            [props.countryMode ? props.data[14].ptTitle : 'Hides and Skins', props.countryMode ? props.data[14].TradeValue : props.data[14]],
+          ],
+          dataLabels: {
+            color: props.darkMode ? '#344493' : '#A8A8A8',
+            style: {
+              fontWeight: 'normal',
+              textOutline: 'none',
+              textShadow: 'none'
+            },
+          }
+        }]
+      };
 
-        return <HighchartsReact highcharts={Highcharts} options={options} ref={chartRef}/>;
-      }
+      return <HighchartsReact highcharts={Highcharts} options={options} ref={chartRef}/>;
     }
   }
 
@@ -99,7 +93,7 @@ export const PieChart = React.memo((props) => {
         <button className={styles.button} onClick={() => props.setByImports(props.countryNum)}>
           {props.importsMode ? 'By exports' : 'By imports'}
         </button>
-        <button className={styles.button}>
+        <button className={styles.button} onClick={() => props.setByCountry(props.countryNum)}>
           {props.countryMode ? 'By product' : 'By country'}
         </button>
       </div>

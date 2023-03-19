@@ -14,7 +14,12 @@ const getData = (props, comCodes) => {
     
     if (props.chartData && props.chartData.length > 0 && props.showError === false) {
         if (props.countryMode) {
-
+            const filteredData = props.chartData[props.countryNum].dataset
+            .filter((item) => item.ptTitle !== 'World')
+            .sort((a, b) => b.TradeValue - a.TradeValue) 
+            .slice(0, 15); 
+    
+            return filteredData;
         }
 
         else {
@@ -36,7 +41,8 @@ export const Section = React.memo((props) => {
 
     useEffect(() => {
         if (props.countryMode) {
-
+            const data = getData(props);
+            setWantedData(data);
         }
 
         else {
