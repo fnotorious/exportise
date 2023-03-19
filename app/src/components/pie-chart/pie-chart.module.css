@@ -107,3 +107,25 @@
     position: relative;
     margin: auto;
 }
+
+.yearLoading {
+    position: absolute;
+    margin: auto;
+    border: 2.5px solid hsl(203, 100%, 73%);
+    border-left-color: transparent;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    left: 10em;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -20,7 +20,8 @@ export const PieChart = React.memo((props) => {
 
   function renderChart() {
     if (props.showError) {
-      return <h3 className={styles.error}>Oops! No data available. Maybe try a different year or check your internet connection.</h3>
+      return <h3 className={styles.error}>Oops! No data available. Try a different year or 
+      try using the app at a later time.</h3>
     }
 
     else if (props.data && props.data.length > 0) {
@@ -102,6 +103,7 @@ export const PieChart = React.memo((props) => {
         </button>
       </div>
       <div className={styles.chartTitle}>
+        {props.timeLoading ? <div className={styles.yearLoading}></div> : ''}
         <span style={{fontWeight: "1000"}}>
           {props.importsMode ? 'Import Makeup ' : 'Export Makeup '}
         </span>

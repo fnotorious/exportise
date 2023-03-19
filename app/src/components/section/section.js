@@ -66,7 +66,7 @@ export const Section = React.memo((props) => {
             setWantedData([fuels, plasticOrRubber, chemicals, transportation, metals, macAndElec, stoneAndGlass, food
                             , animals, wood, miscellaneous, minerals, vegetables, textiles, hidesAndSkins]);
         }
-    }, [props, getData])
+    }, [props])
 
     const handleYearChange = (newYear) => {
         const element = document.querySelectorAll('#pointer')[props.countryNum];
@@ -236,7 +236,7 @@ export const Section = React.memo((props) => {
                 2020
             </div>
         </div>
-        <PieChart year={props.year} countryNum={props.countryNum} setByImports={props.setByImports} setByCountry={props.setByCountry} importsMode={props.importsMode} countryMode={props.countryMode} data={wantedData} darkMode={props.darkMode} showLoading={props.chartLoading} showError={props.showError}></PieChart>
+        <PieChart timeLoading={props.timeLoading} year={props.year} countryNum={props.countryNum} setByImports={props.setByImports} setByCountry={props.setByCountry} importsMode={props.importsMode} countryMode={props.countryMode} data={wantedData} darkMode={props.darkMode} showLoading={props.chartLoading} showError={props.showError}></PieChart>
     </div>
   )
 })
