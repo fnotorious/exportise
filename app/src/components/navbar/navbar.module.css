@@ -55,7 +55,6 @@
 .buttons {
     display: flex;
     margin: auto;
-    width: 55em;
 }
 
 .navItem {
@@ -100,7 +99,7 @@
 .compareButton {
     background-color: hsl(203, 100%, 73%);
     height: 2.5em;
-    width: 9em;
+    width: 7.9em;
     border: none;
     color: white;
     text-align: center;

@@ -189,3 +189,21 @@
     50% { background-color: #233178; }
     100% { background-color: #344493; }
 }
+
+@media (max-width: 1420px) {
+    .names {
+        left: 16em;
+    }
+}
+
+@media (max-width: 1280px) {
+    .names {
+        left: 14em;
+    }
+}
+
+@media (max-width: 1140px) {
+    .names {
+        left: 12em;
+    }
+}

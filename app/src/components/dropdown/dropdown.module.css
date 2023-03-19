@@ -45,17 +45,29 @@
   .inputLong {
     width: 28em;
   }
+
+  .inputShort {
+    width: 16em;
+  }
 }
   
 @media (max-width: 1280px) {
   .inputLong {
     width: 24em;
   }
+
+  .inputShort {
+    width: 14em;
+  }
 }
   
-  @media (max-width: 1140px) {
-    .inputLong {
-      width: 20em;
-    }
+@media (max-width: 1140px) {
+  .inputLong {
+    width: 20em;
   }
+
+  .inputShort {
+    width: 12em;
+  }
+}
   

@@ -335,3 +335,75 @@
     50% { background-color: #233178; }
     100% { background-color: #344493; }
 }
+
+@media (max-width: 1420px) {
+    .flagDisplay {
+        margin-left: 4em;
+    }
+
+    .capAndCurr {
+        left: 16em;
+    }
+
+    .bar {
+        width: 33em;
+    }
+
+    .barForPointer {
+        width: 33em;
+    }
+
+    .labels {
+        width: 33em;
+    }
+}
+
+@media (max-width: 1280px) {
+    .flagDisplay {
+        margin-left: 2em;
+    }
+
+    .capAndCurr {
+        left: 14em;
+    }
+
+    .bar {
+        width: 31em;
+    }
+
+    .barForPointer {
+        width: 31em;
+    }
+
+    .labels {
+        width: 31em;
+    }
+}
+
+@media (max-width: 1140px) {
+    .flagDisplay {
+        margin-left: 0em;
+    }
+
+    .capAndCurr {
+        left: 12em;
+    }
+
+    .bar {
+        width: 29em;
+    }
+
+    .barForPointer {
+        width: 29em;
+    }
+
+    .labels {
+        width: 29em;
+    }
+}
+
+@media (max-height: 810px) {
+    .section {
+        width: calc(50vw - 10.6px);
+    }
+}
