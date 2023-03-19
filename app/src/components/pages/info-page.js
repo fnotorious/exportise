@@ -275,13 +275,13 @@ const InfoPage = React.memo((props) => {
     , { signal: controller.signal })
       .then(res => {
         if (!res.ok) {
-          if (res.status === 409 || 500) {
+          if (res.status === 500) {
             setShowError(true);
             setChartLoading(false);
           }
 
           else {
-            setShowError(true);
+            fetchExportData(controller);
           }
         }
 
@@ -294,7 +294,7 @@ const InfoPage = React.memo((props) => {
     , { signal: controller.signal })
       .then(res => {
         if (!res.ok) {
-          if (res.status === 409 || 500) {
+          if (res.status === 500) {
             setShowError(true);
             setChartLoading2(false);
           }
@@ -355,10 +355,10 @@ const InfoPage = React.memo((props) => {
       <Navbar handleChange={props.handleChange} handleSelection={props.handleSelection} darkMode={props.darkMode} countryOne={props.countryOne} countryTwo={props.countryTwo}></Navbar>
       <div className={styles.sections}>
         <Section chartLoading={chartLoading} setByImports={setByImports} setByCountry={setByCountry} importsMode={importsMode} countryMode={countryMode} showError={showError} chartData={chartData} year={year1} setNewYear={setNewYear} countryNum={0} 
-                  timeLoading={timeLoading} country={props.countryOne} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
+                  sendReq={sendReq} timeLoading={timeLoading} country={props.countryOne} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
 
         <Section chartLoading={chartLoading2} setByImports={setByImports} setByCountry={setByCountry} importsMode={importsMode2} countryMode={countryMode2} showError={showError2} chartData={chartData} year={year2} setNewYear={setNewYear} countryNum={1} 
-                  timeLoading={timeLoading2} country={props.countryTwo} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
+                  sendReq={sendReq} timeLoading={timeLoading2} country={props.countryTwo} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
       </div>
       <div className={styles.mainSection}>
       

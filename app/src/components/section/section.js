@@ -139,61 +139,61 @@ export const Section = React.memo((props) => {
         </div>
         <div className={styles.bar}>
             <div className={styles.timeContainer}>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2002)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2002) : ''}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2003)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2003) : ''}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2004)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2004) : ''}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2005)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2005) : ''}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2006)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2006) : ''}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2007)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2007) : ''}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2008)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2008) : ''}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2009)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2009) : ''}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2010)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2010) : ''}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2011)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2011) : ''}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2012)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2012) : ''}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2013)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2013) : ''}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2014)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2014) : ''}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2015)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2015) : ''}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2016)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2016) : ''}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2017)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2017) : ''}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2018)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2018) : ''}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2019)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2019) : ''}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={() => handleYearChange(2020)}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2020) : ''}>
                     <div className={styles.bigMark}></div>
                 </div>
             </div>
