@@ -19,7 +19,11 @@ export const PieChart = React.memo((props) => {
   }, [])
 
   function renderChart() {
-    if (props.data && props.data.length > 0) {
+    if (props.showError) {
+      return <h3 className={styles.error}>Oops! No data available. Maybe try a different year or check your internet connection.</h3>
+    }
+
+    else if (props.data && props.data.length > 0) {
       Highcharts3D(Highcharts);
 
       const options = {

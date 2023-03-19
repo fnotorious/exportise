@@ -14,7 +14,7 @@ const getData = (props, comCodes) => {
     
     if (props.chartData && props.chartData.length > 0 && props.showError === false) {
         if (props.countryMode) {
-            const filteredData = props.chartData[props.countryNum].dataset
+            const filteredData = props.chartData[props.countryNum]
             .filter((item) => item.ptTitle !== 'World')
             .sort((a, b) => b.TradeValue - a.TradeValue) 
             .slice(0, 15); 
@@ -23,7 +23,7 @@ const getData = (props, comCodes) => {
         }
 
         else {
-            const filteredData = props.chartData[props.countryNum].dataset.filter((item) => {
+            const filteredData = props.chartData[props.countryNum].filter((item) => {
                 return comCodes.includes(item.cmdCode);
             });
     

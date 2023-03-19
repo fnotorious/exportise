@@ -14,6 +14,7 @@ const InfoPage = React.memo((props) => {
   const [prevSelection, setPrevSelection] = useState([props.countryOne, props.countryTwo]);
   const [selectionChange, setSelectionChange] = useState(true);
   const [showError, setShowError] = useState(false);
+  const [showError2, setShowError2] = useState(false);
 
   const [sendReq, setSendReq] = useState(true);
   const [firstRun, setFirstRun] = useState(true);
@@ -304,7 +305,23 @@ const InfoPage = React.memo((props) => {
     setChartLoading2(false);
     setSendReq(false);
 
-    setChartData([data1, data2]);
+    if (data1.dataset.length === 0) {
+      setShowError(true);
+    }
+
+    else {
+      setShowError(false);
+    }
+
+    if (data2.dataset.length === 0) {
+      setShowError2(true);
+    }
+
+    else {
+      setShowError2(false);
+    }
+
+    setChartData([data1.dataset, data2.dataset]);
   };
 
   const debounceExportData = debounce(fetchExportData, 1000);
@@ -331,7 +348,7 @@ const InfoPage = React.memo((props) => {
         <Section chartLoading={chartLoading} setByImports={setByImports} setByCountry={setByCountry} importsMode={importsMode} countryMode={countryMode} showError={showError} chartData={chartData} year={year1} setNewYear={setNewYear} countryNum={0} 
                   country={props.countryOne} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
 
-        <Section chartLoading={chartLoading2} setByImports={setByImports} setByCountry={setByCountry} importsMode={importsMode2} countryMode={countryMode2} showError={showError} chartData={chartData} year={year2} setNewYear={setNewYear} countryNum={1} 
+        <Section chartLoading={chartLoading2} setByImports={setByImports} setByCountry={setByCountry} importsMode={importsMode2} countryMode={countryMode2} showError={showError2} chartData={chartData} year={year2} setNewYear={setNewYear} countryNum={1} 
                   country={props.countryTwo} darkMode={props.darkMode} dataLoaded={dataLoaded} showLoading={showLoading} isOnline={isOnline} selectionChange={selectionChange} data={data}></Section>
       </div>
       <div className={styles.mainSection}>

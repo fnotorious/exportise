@@ -79,6 +79,19 @@
     color: #344493 !important;
 }
 
+.error {
+    height: 3em;
+    width: 20em;
+    text-align: center;
+    font-size: 1.5em;
+    margin: auto;
+    color: #a8a8a8;
+}
+
+.dark .error {
+    color: #344493 !important;
+}
+
 .pieChart {
     position: relative;
     width: 100%;
