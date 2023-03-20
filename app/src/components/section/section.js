@@ -139,61 +139,61 @@ export const Section = React.memo((props) => {
         </div>
         <div className={styles.bar}>
             <div className={styles.timeContainer}>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2002) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2002) : null}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2003) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2003) : null}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2004) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2004) : null}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2005) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2005) : null}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2006) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2006) : null}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2007) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2007) : null}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2008) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2008) : null}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2009) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2009) : null}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2010) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2010) : null}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2011) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2011) : null}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2012) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2012) : null}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2013) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2013) : null}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2014) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2014) : null}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2015) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2015) : null}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2016) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2016) : null}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2017) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2017) : null}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2018) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2018) : null}>
                     <div className={styles.bigMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2019) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2019) : null}>
                     <div className={styles.littleMark}></div>
                 </div>
-                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2020) : ''}>
+                <div className={styles.timePeriod} onClick={!props.sendReq ? () => handleYearChange(2020) : null}>
                     <div className={styles.bigMark}></div>
                 </div>
             </div>
