@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styles from './navbar.module.css'
-import banner from '../../assets/ITSCHRISTMAS.png'
+import logo from '../../assets/Logo.svg'
 
 import { Recent } from '../button/recent'
 import { DropdownMenu } from '../dropdown/dropdown'
@@ -83,7 +83,10 @@ export const Navbar = React.memo((props) => {
 
   return (
     <div className={`${styles.navBar} ${props.darkMode ? styles.dark : ''}`}>
-        <img src={banner} alt="BANNER" className={styles.logoBanner}></img>
+        <div className={styles.logoBanner}>
+          <img src={logo} alt="logo" className={styles.logo}></img>
+          <h1 className={styles.title}>Exportise</h1>
+        </div>
         <div className={styles.navBarSection}>
           <div className={styles.buttons}>
             <div className={styles.navItem}>

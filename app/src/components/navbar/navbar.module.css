@@ -18,6 +18,9 @@
 
 .logoBanner {
     position: absolute;
+    display: flex;
+    flex-direction: row;
+    column-gap: .5em;
     width: 9em;
     height: 4em;
     left: 0;
@@ -25,8 +28,22 @@
     bottom: 0;
     margin-bottom: auto;
     margin-top: auto;
-    margin-left: .5em;
+    margin-left: 2em;
+}
 
+.logo {
+    height: 1.6em;
+    width: 1.6em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.title {
+    position: relative;
+    font-size: 1.5em;
+    color: #75caff;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .navBarSection {

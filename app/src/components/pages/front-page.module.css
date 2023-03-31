@@ -1,9 +1,4 @@
 @font-face {
-    font-family: 'Coolvetica';
-    src: url(../../assets/coolvetica-rg.woff);
-}
-
-@font-face {
     font-family: 'Bahnscrhift';
     src: url(../../assets/bahnschrift.woff);
 }
@@ -64,6 +59,8 @@
 
 .logoBanner {
     position: relative;
+    display: flex;
+    flex-direction: row;
     width: 45em;
     height: 20em;
     margin-top: -2.8em;
@@ -71,14 +68,31 @@
     right: 0; 
     margin-left: auto; 
     margin-right: auto; 
+    justify-content: center;
+    column-gap: 1.5em;
+    user-select: none;
+}
+
+.logo {
+    position: relative;
+    height: 100%;
+    width: 8em;
+}
+
+.title {
+    position: relative;
+    font-size: 6em;
+    color: #75caff;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .logoText {
     margin-top: -2.8em;
-    font-family: 'Coolvetica';
     position: relative;
     color: hsl(203, 100%, 73%);
-    font-size: 1.2em;
+    font-size: 1.4em;
+    font-weight: 700;
 }
 
 .dark .logoText {

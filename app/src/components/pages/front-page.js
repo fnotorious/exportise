@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styles from './front-page.module.css'
-import banner from '../../assets/ITSCHRISTMAS.png'
+import logo from '../../assets/Logo.svg'
 
 import { DropdownMenu } from '../dropdown/dropdown'
 import { BurgerMenu } from '../burger-menu/burger-menu'
@@ -71,7 +71,10 @@ const FrontPage = React.memo((props) => {
                 <BurgerMenu darkModeFunction={toggleDarkMode} darkMode={props.darkMode}></BurgerMenu>
               </div>
               <div className={styles.centerBox}>
-                  <img src={banner} alt="BANNER" className={styles.logoBanner}></img>
+                  <div className={styles.logoBanner}>
+                    <img src={logo} alt="logo" className={styles.logo}></img>
+                    <h1 className={styles.title}>Exportise</h1>
+                  </div>
                   <div className={styles.logoText}>Comparing trade and economy between nations</div>
                   <div className={styles.inputSection}>
                     <div className={styles.menuOne}>
