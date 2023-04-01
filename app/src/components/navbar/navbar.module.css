@@ -29,6 +29,7 @@
     margin-bottom: auto;
     margin-top: auto;
     margin-left: 2em;
+    user-select: none;
 }
 
 .logo {
