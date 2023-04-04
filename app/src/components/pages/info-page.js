@@ -215,7 +215,12 @@ const InfoPage = React.memo((props) => {
     'vn' : '704',
     'ye' : '887',
     'zm' : '894',
-    'zw' : '716'
+    'zw' : '716',
+    'lu' : '442',
+    'me' : '499',
+    'rw' : '646',
+    'bz' : '84',
+    'mt' : '470'
   }
 
   useEffect(() => {

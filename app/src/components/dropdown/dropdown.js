@@ -18,6 +18,7 @@ export const DropdownMenu = ({ darkMode, onChange, size }) => {
             <option value="bd" id="Bangladesh">Bangladesh</option>
             <option value="by" id="Belarus">Belarus</option>
             <option value="be" id="Belgium">Belgium</option>
+            <option value="bz" id="Belize">Belize</option>
             <option value="bo" id="Bolivia">Bolivia</option>
             <option value="ba" id="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
             <option value="bw" id="Botswana">Botswana</option>
@@ -79,16 +80,19 @@ export const DropdownMenu = ({ darkMode, onChange, size }) => {
             <option value="lr" id="Liberia">Liberia</option>
             <option value="ly" id="Libya">Libya</option>
             <option value="lt" id="Lithuania">Lithuania</option>
+            <option value="lu" id="Luxembourg">Luxembourg</option>
             <option value="mk" id="North Macedonia">North Macedonia</option>
             <option value="mg" id="Madagascar">Madagascar</option>
             <option value="mw" id="Malawi">Malawi</option>
             <option value="my" id="Malaysia">Malaysia</option>
             <option value="ml" id="Mali">Mali</option>
+            <option value="mt" id="Malta">Malta</option>
             <option value="mr" id="Mauritania">Mauritania</option>
             <option value="mu" id="Mauritius">Mauritius</option>
             <option value="mx" id="Mexico">Mexico</option>
             <option value="md" id="Moldova">Moldova</option>
             <option value="mn" id="Mongolia">Mongolia</option>
+            <option value="me" id="Montenegro">Montenegro</option>
             <option value="ma" id="Morocco">Morocco</option>
             <option value="mz" id="Mozambique">Mozambique</option>
             <option value="mm" id="Myanmar">Myanmar</option>
@@ -112,6 +116,7 @@ export const DropdownMenu = ({ darkMode, onChange, size }) => {
             <option value="qa" id="Qatar">Qatar</option>
             <option value="ro" id="Romania">Romania</option>
             <option value="ru" id="Russia">Russia</option>
+            <option value="rw" id="Rwanda">Rwanda</option>
             <option value="sa" id="Saudi Arabia">Saudi Arabia</option>
             <option value="sn" id="Senegal">Senegal</option>
             <option value="rs" id="Serbia">Serbia</option>
