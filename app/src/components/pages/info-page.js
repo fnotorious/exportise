@@ -32,7 +32,6 @@ const InfoPage = React.memo((props) => {
 
   const [countryMode, setCountryMode] = useState(false);
   const [countryMode2, setCountryMode2] = useState(false);
-  const API_KEY = '562a82ab18f844f78e5591084963c499';
 
   const setNewYear = (newYear, countryNum) => {
     if (countryNum === 0) {
@@ -128,10 +127,28 @@ const InfoPage = React.memo((props) => {
     debounceFetchCountries();
   }, [props.countryOne, props.countryTwo]);
 
-  const fetchExportData = async (controller) => {
-    const data1 = await fetch(`http://comtrade.un.org/api/get?type=C&freq=A&px=HS&ps=${year1}&r=${codes[props.countryOne]}&p=${countryMode ? 'ALL' : '0'}&rg=${importsMode ? '1' : '2'}&cc=${countryMode ? 'TOTAL' : 'ALL'}&fmt=json&max=5000&token=${API_KEY}`
-    , { signal: controller.signal })
+  const fetchExportData = () => {
+
+    fetch(`http://localhost:3001/api/data?country=${codes[props.countryOne]}&flow=${importsMode ? 'M' : 'X'}&year=${year1}&cMode=${countryMode}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => console.error(error));
+
+    /*
+    const data1 = await fetch(`https://comtradeapi.un.org/data/v1/get/C/A/HS?reporterCode=36&period=2020&flowCode=X&aggregateBy=cmdCode&breakdownMode=classic&includeDesc=false&cmdCode=total`
+    , { 
+        method: 'GET',
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Ocp-Apim-Subscription-Key': `${API_KEY}`,
+        },
+        signal: controller.signal 
+      })
       .then(res => {
+        console.log(res);
+
         if (!res.ok) {
           if (res.status === 500) {
             setShowError(true);
@@ -141,10 +158,10 @@ const InfoPage = React.memo((props) => {
           else {
             fetchExportData(controller);
           }
-        }
-
-        return res.json();
-      })  
+        }})
+      .then(data => {
+        console.log(data); // access the JSON data
+      });
     
     setTimeLoading(false);
 
@@ -186,7 +203,10 @@ const InfoPage = React.memo((props) => {
       setShowError2(false);
     }
 
-    setChartData([data1.dataset, data2.dataset]);
+    console.log(data1);
+
+    setChartData([data1.data, data2.dataset]);
+    */
   };
 
   const debounceExportData = debounce(fetchExportData, 1000);
@@ -195,7 +215,7 @@ const InfoPage = React.memo((props) => {
     const controller = new AbortController();
 
     if (sendReq) {
-      debounceExportData(controller);
+      debounceExportData();
     }
   
     if (!firstRun && sendReq) {
