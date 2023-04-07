@@ -2,18 +2,9 @@ import React from 'react'
 import styles from './banner.module.css'
 
 export const Banner = React.memo((props) => {
-    function checkCountry(country) {
-        let inList = false;
-        const list = ['il', 'pk', 'pe', 'bo'];
-
-        for (let i = 0; i < list.length; i ++) {
-            if (country === list[i]) {
-                inList = true;
-                break;
-            }
-        }
-
-        return inList;
+    let nativeName
+    if (props.data && props.data.length > 0) {
+        nativeName = props.data[props.countryNum].name.nativeName[Object.keys(props.data[props.countryNum].name.nativeName)[0]].common;
     }
 
   return (
@@ -28,7 +19,7 @@ export const Banner = React.memo((props) => {
                 </div>
                 <div className={styles.nativeNameDisplay}>
                     {(!(props.data && props.data.length > 0) && !props.dataLoaded) || props.isOnline === false ? <div className={styles.nativeNameLoader}></div> : 
-                    (<p className={styles.nativeName}>{props.data && props.data.length > 0 ? props.data[props.countryNum].name.nativeName[Object.keys(props.data[props.countryNum].name.nativeName)[checkCountry(props.country) ? 1 : 0]].common : ''}</p>)}
+                    (<p className={styles.nativeName}>{props.data && props.data.length > 0 ? nativeName : '' }</p>)}
                 </div>
         </div>
     </div>

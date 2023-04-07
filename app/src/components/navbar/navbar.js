@@ -60,6 +60,10 @@ export const Navbar = React.memo((props) => {
           
           navigate('/info');
         }
+
+        else {
+          props.setCooldown();
+        }
       };
 
       // Toggle dark mode for this page and all other pages in the app
@@ -78,9 +82,13 @@ export const Navbar = React.memo((props) => {
             newRecents[0] = [countryOne, countryTwo];
             return newRecents;
           });
+
+          navigate('/info');
         }
-    
-        navigate('/info');
+
+        else {
+          props.setCooldown();
+        }
       };
 
   return (
