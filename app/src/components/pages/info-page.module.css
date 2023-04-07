@@ -61,6 +61,32 @@
     margin-bottom: 0;
 }
 
+.cooldown {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    right: 0;
+    left: 0;
+    bottom: 2em;
+    font-size: .9em;
+    width: 10em;
+    height: 3em;
+
+    border: .12em solid #ccc;
+    border-radius: 10px;
+    background-color: hsl(0, 0%, 100%);
+    color: #ccc;
+    z-index: 5;
+}
+
+.dark .cooldown {
+    background-color: rgb(8, 14, 41) !important;
+    border: .12em solid rgb(52, 68, 147) !important;
+    color: rgb(52, 68, 147) !important;
+}
+
 .dark h3 {
     color: #344493 !important;
 }

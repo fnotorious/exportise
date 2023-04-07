@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { nameCodes } from '../pages/codes';
 import styles from './pie-chart.module.css'
 
 import Highcharts from 'highcharts';
@@ -9,6 +10,15 @@ import LoadingAnimation from '../loading-animation/loading-animation'
 export const PieChart = React.memo((props) => {
   const [prevData, setPrevData] = useState(props.data);
   const chartRef = useRef(null);
+
+  let names;
+  if (props.countryMode) {
+    const partnerCodes = props.data.map(data => data.partnerCode !== undefined ? data.partnerCode.toString() : '');
+    names = partnerCodes.map(code => {
+      const matchingNameCode = nameCodes.find(nameCode => nameCode.id === code);
+      return matchingNameCode ? matchingNameCode.text : null;
+    });
+  }
 
   useEffect(() => {
     if (prevData !== props.data) {
@@ -61,21 +71,21 @@ export const PieChart = React.memo((props) => {
           type: 'pie',
           name: 'Commodity Trade by Value: ($USD)',
           data: [
-            props.data[0] ? [props.countryMode ? props.data[0].ptTitle : 'Fuels', props.countryMode ? props.data[0].TradeValue : props.data[0]] : null,
-            props.data[1] ? [props.countryMode ? props.data[1].ptTitle : 'Plastic and Rubber', props.countryMode ? props.data[1].TradeValue : props.data[1]] : null,
-            props.data[2] ? [props.countryMode ? props.data[2].ptTitle : 'Chemicals', props.countryMode ? props.data[2].TradeValue : props.data[2]] : null,
-            props.data[3] ? [props.countryMode ? props.data[3].ptTitle : 'Transportation', props.countryMode ? props.data[3].TradeValue : props.data[3]] : null,
-            props.data[4] ? [props.countryMode ? props.data[4].ptTitle : 'Metals', props.countryMode ? props.data[4].TradeValue : props.data[4]] : null,
-            props.data[5] ? [props.countryMode ? props.data[5].ptTitle : 'Machinery and Electronics', props.countryMode ? props.data[5].TradeValue : props.data[5]] : null,
-            props.data[6] ? [props.countryMode ? props.data[6].ptTitle : 'Stone and Glass', props.countryMode ? props.data[6].TradeValue : props.data[6]] : null,
-            props.data[7] ? [props.countryMode ? props.data[7].ptTitle : 'Food', props.countryMode ? props.data[7].TradeValue : props.data[7]] : null,
-            props.data[8] ? [props.countryMode ? props.data[8].ptTitle : 'Animals', props.countryMode ? props.data[8].TradeValue : props.data[8]] : null,
-            props.data[9] ? [props.countryMode ? props.data[9].ptTitle : 'Wood', props.countryMode ? props.data[9].TradeValue : props.data[9]] : null,
-            props.data[10] ? [props.countryMode ? props.data[10].ptTitle : 'Miscellaneous', props.countryMode ? props.data[10].TradeValue : props.data[10]] : null,
-            props.data[11] ? [props.countryMode ? props.data[11].ptTitle : 'Minerals', props.countryMode ? props.data[11].TradeValue : props.data[11]] : null,
-            props.data[12] ? [props.countryMode ? props.data[12].ptTitle : 'Vegetables', props.countryMode ? props.data[12].TradeValue : props.data[12]] : null,
-            props.data[13] ? [props.countryMode ? props.data[13].ptTitle : 'Textiles', props.countryMode ? props.data[13].TradeValue : props.data[13]] : null,
-            props.data[14] ? [props.countryMode ? props.data[14].ptTitle : 'Hides and Skins', props.countryMode ? props.data[14].TradeValue : props.data[14]] : null,
+            props.data[0] ? [props.countryMode ? names[0] : 'Fuels', props.countryMode ? props.data[0].primaryValue : props.data[0]] : null,
+            props.data[1] ? [props.countryMode ? names[1] : 'Plastic and Rubber', props.countryMode ? props.data[1].primaryValue : props.data[1]] : null,
+            props.data[2] ? [props.countryMode ? names[2] : 'Chemicals', props.countryMode ? props.data[2].primaryValue : props.data[2]] : null,
+            props.data[3] ? [props.countryMode ? names[3] : 'Transportation', props.countryMode ? props.data[3].primaryValue : props.data[3]] : null,
+            props.data[4] ? [props.countryMode ? names[4] : 'Metals', props.countryMode ? props.data[4].primaryValue : props.data[4]] : null,
+            props.data[5] ? [props.countryMode ? names[5] : 'Machinery and Electronics', props.countryMode ? props.data[5].primaryValue : props.data[5]] : null,
+            props.data[6] ? [props.countryMode ? names[6] : 'Stone and Glass', props.countryMode ? props.data[6].primaryValue : props.data[6]] : null,
+            props.data[7] ? [props.countryMode ? names[7] : 'Food', props.countryMode ? props.data[7].primaryValue : props.data[7]] : null,
+            props.data[8] ? [props.countryMode ? names[8] : 'Animals', props.countryMode ? props.data[8].primaryValue : props.data[8]] : null,
+            props.data[9] ? [props.countryMode ? names[9] : 'Wood', props.countryMode ? props.data[9].primaryValue : props.data[9]] : null,
+            props.data[10] ? [props.countryMode ? names[10] : 'Miscellaneous', props.countryMode ? props.data[10].primaryValue : props.data[10]] : null,
+            props.data[11] ? [props.countryMode ? names[11] : 'Minerals', props.countryMode ? props.data[11].primaryValue : props.data[11]] : null,
+            props.data[12] ? [props.countryMode ? names[12] : 'Vegetables', props.countryMode ? props.data[12].primaryValue : props.data[12]] : null,
+            props.data[13] ? [props.countryMode ? names[13] : 'Textiles', props.countryMode ? props.data[13].primaryValue : props.data[13]] : null,
+            props.data[14] ? [props.countryMode ? names[14] : 'Hides and Skins', props.countryMode ? props.data[14].primaryValue : props.data[14]] : null,
           ],
           dataLabels: {
             color: props.darkMode ? '#344493' : '#A8A8A8',

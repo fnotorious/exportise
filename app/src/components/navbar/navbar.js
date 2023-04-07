@@ -47,7 +47,7 @@ export const Navbar = React.memo((props) => {
     
       // Submit and check for errors upon submit
       const handleSubmit = () => {
-        if (errorFlag === false) {
+        if (errorFlag === false && !props.sendReq) {
           props.handleSelection(selectedOption1, selectedOption2);
     
           setRecents((prevRecents) => {
@@ -68,15 +68,17 @@ export const Navbar = React.memo((props) => {
       }
     
       const handleRecentsSubmit = (countryOne, countryTwo) => {
-        props.handleSelection(countryOne, countryTwo);
+        if (!props.sendReq) {
+          props.handleSelection(countryOne, countryTwo);
     
-        setRecents((prevRecents) => {
-          const newRecents = [...prevRecents];
-          newRecents[2] = newRecents[1];
-          newRecents[1] = newRecents[0];
-          newRecents[0] = [countryOne, countryTwo];
-          return newRecents;
-        });
+          setRecents((prevRecents) => {
+            const newRecents = [...prevRecents];
+            newRecents[2] = newRecents[1];
+            newRecents[1] = newRecents[0];
+            newRecents[0] = [countryOne, countryTwo];
+            return newRecents;
+          });
+        }
     
         navigate('/info');
       };

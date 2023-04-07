@@ -26,7 +26,6 @@ app.get('/api/data', async (req, res) => {
         }
 
         const headers = {
-            'Cache-Control': 'no-cache',
             'Content-Type': 'application/json',
             'Ocp-Apim-Subscription-Key': '77ba4705044741ac8d818dd97203653b'
         }
