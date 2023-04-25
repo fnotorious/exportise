@@ -188,7 +188,7 @@ const InfoPage = React.memo((props) => {
         setChartData1(data1);
         setChangeFlag1(false);
 
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
         setSendReq(false);
       }
 
@@ -197,7 +197,7 @@ const InfoPage = React.memo((props) => {
         setChartData2(data2);
         setChangeFlag2(false);
 
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
         setSendReq(false);
       }
 
@@ -206,13 +206,13 @@ const InfoPage = React.memo((props) => {
         setChartData1(data1);
         setChangeFlag1(false);
 
-        await new Promise(resolve => setTimeout(resolve, 6000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
 
         const data2 = await fetchExportData(2, props.countryTwo, importsMode2, year2, countryMode2);
         setChartData2(data2);
         setChangeFlag2(false);
 
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
         setSendReq(false);
       }
     } catch (error) {
