@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Moon from '../../assets/Moon.js'
-import Info from '../../assets/Info.js'
 import Menu from '../../assets/Menu.js'
 import styles from './burger-menu.module.css'
 
@@ -23,13 +22,6 @@ export const BurgerMenu = ({ darkModeFunction, darkMode }) => {
                     </div>
                 </div>
             </div>
-            <div className={styles.options}>
-                <Info darkMode={darkMode}></Info>
-                <p className={styles.optionText}>Help</p>
-            </div>
-            <div className={styles.options}>
-                <p className={styles.optionText}>Credits</p>
-            </div> 
         </div>;
 
     // Return menu box upon toggle
